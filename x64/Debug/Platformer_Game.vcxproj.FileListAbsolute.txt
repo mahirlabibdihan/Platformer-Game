@@ -1,0 +1,2 @@
+D:\Github\Platformer_Game\x64\Debug\Platformer_Game.exe
+D:\Github\Platformer_Game\x64\Debug\Platformer_Game.pdb
