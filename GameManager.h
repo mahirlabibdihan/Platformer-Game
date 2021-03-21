@@ -3,7 +3,6 @@
 #include "iGraphics.h"
 class GameManager
 {
-	int score;
 public:
 	GameManager();
 	void init();

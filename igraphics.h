@@ -99,6 +99,26 @@ public:
 		}
 	}
 
+	// Draw Big texts
+	static void iBigText(double x, double y, const char* str, void* font = GLUT_STROKE_ROMAN)
+	{
+		glPushMatrix();
+		glTranslatef(x, y, 0);
+		int i;
+		for (i = 0; str[i]; i++)
+			glutStrokeCharacter(font, str[i]); // GLUT_STROKE_ROMAN  , GLUT_STROKE_MONO_ROMAN
+		glPopMatrix();
+	}
+	static void iBigText(double x, double y, string str, void* font = GLUT_STROKE_ROMAN)
+	{
+		glPushMatrix();
+		glTranslatef(x, y, 0);
+		int i;
+		for (i = 0; str[i]; i++)
+			glutStrokeCharacter(font, str[i]); // GLUT_STROKE_ROMAN  , GLUT_STROKE_MONO_ROMAN
+		glPopMatrix();
+	}
+
 	// Sets color for drawing
 	static void iSetColor(double r, double g, double b, double a=1.0)
 	{
@@ -167,6 +187,7 @@ public:
 		glVertex2f(x2, y1);
 		glVertex2f(x2, y2);
 		glVertex2f(x1, y2);
+		glVertex2f(x1, y1);
 		glEnd();
 
 		glColor4f(0, 0, 0, 1);
@@ -175,6 +196,7 @@ public:
 		glVertex2f(x2, y1);
 		glVertex2f(x2, y2);
 		glVertex2f(x1, y2);
+		glVertex2f(x1, y1);
 		glEnd();
 	}
 

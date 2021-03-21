@@ -27,5 +27,7 @@ public:
 	bool levelUp();
 	char get(int,int);
 	void set(int,int,char);
+	void draw();
+	void reset();
 };
 #endif

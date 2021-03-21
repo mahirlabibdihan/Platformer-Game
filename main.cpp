@@ -4,8 +4,12 @@
 #include "LevelManager.h"
 #include "TilesManager.h"
 #include "SpikesManager.h"
+#include "MenuManager.h"
+#include "ScoreManager.h"
 #include "color.h"
 
+ScoreManager score;
+MenuManager menu;
 SpikesManager spikes;
 CameraManager camera;
 PlayerManager player;
@@ -301,9 +305,13 @@ void iG::windowSetup()
 
 void update(int t)
 {
-	player.update();
-	spikes.update();
-	camera.update();
+	if (menu.getMenu() == MenuManager::PLAY)
+	{
+		player.update();
+		spikes.update();
+		camera.update();
+	}
+	
 	glutPostRedisplay();
 	glutTimerFunc(30, update, 0);
 }
@@ -313,7 +321,7 @@ int main(int argc, char *argv[])
 	glutInit(&argc, argv);
 	srand(time(NULL));
 	iG::windowSetup();
-	game.init();
+	// game.init();
 	iG::iInitialize("Game");
 	glutTimerFunc(30, update, 0);
 	glutFullScreen();

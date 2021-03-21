@@ -16,6 +16,7 @@ public:
 	PlayerManager();
 	void update();
 	void draw();
+	void drawLife();
 	void moveUp();
 	void moveDown();
 	void moveRight();
@@ -27,5 +28,6 @@ public:
 	void die();
 	void setStart(int,int);
 	void setEnd(int,int);
+	void reset();
 };
 #endif

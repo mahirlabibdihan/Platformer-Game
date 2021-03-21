@@ -1,4 +1,5 @@
 #include "LevelManager.h"
+#include "Color.h"
 LevelManager::LevelManager()
 {
 	levelNum = totalLevels = 0;
@@ -86,4 +87,17 @@ int LevelManager::getEndR()
 int LevelManager::getEndC()
 {
 	return endC;
+}
+
+void LevelManager::reset()
+{
+	levelNum = totalLevels=  0;
+}
+
+void LevelManager::draw()
+{
+	char temp[40];
+	snprintf(temp, 40, "LEVEL :  %d", levelNum);
+	iG::iSetColor(RED);
+	iG::iText(iG::iGetWindowWidth() - 200, iG::iGetWindowHeight() - 150, temp);
 }

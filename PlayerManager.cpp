@@ -4,7 +4,15 @@
 #include "GameManager.h"
 #include "SpikesManager.h"
 #include"LevelManager.h"
+#include "ScoreManager.h"
+#include "MenuManager.h"
+#include "CameraManager.h"
 
+
+extern CameraManager camera;
+extern PlayerManager player;
+extern MenuManager menu;
+extern ScoreManager score;
 extern LevelManager level;
 extern SpikesManager spikes;
 extern GameManager game;
@@ -80,25 +88,25 @@ void PlayerManager::update()
 	if (tiles.getCell(floor(newY / height), floor(newX / width)) == 'o')
 	{
 		tiles.setCell(floor(newY / height), floor(newX / width), '.');
-		game.scoreUp();
+		score.increase();
 	}
 
 	if (tiles.getCell(floor(newY / height), ceil(newX / width)) == 'o')
 	{
 		tiles.setCell(floor(newY / height), ceil(newX / width), '.');
-		game.scoreUp();
+		score.increase();
 	}
 
 	if (tiles.getCell(ceil(newY / height), floor(newX / width)) == 'o')
 	{
 		tiles.setCell(ceil(newY / height), floor(newX / width), '.');
-		game.scoreUp();
+		score.increase();
 	}
 
 	if (tiles.getCell(ceil(newY / height), ceil(newX / width)) == 'o')
 	{
 		tiles.setCell(ceil(newY / height), ceil(newX / width), '.');
-		game.scoreUp();
+		score.increase();
 	}
 	x = newX;
 	y = newY;
@@ -107,11 +115,26 @@ void PlayerManager::update()
 		init();
 		life--;
 	}
-	if(!life) glutLeaveMainLoop();
-	if (x == endC * width && y == endR * height) game.init();
+	if (!life)
+	{
+		menu.setMenu(MenuManager::GAMEOVER);
+	}
+	if (x == endC * width && y == endR * height)
+	{
+		level.setTotalLevels(2);
+		if (level.levelUp())
+		{
+			level.load();
+		}
+		player.init();
+		camera.init();
+		tiles.init();
+		tiles.setField();
+	}
 }
 void PlayerManager::init()
 {	
+	
 	this->setHeight(tiles.getHeight());
 	this->setWidth(tiles.getWidth());
 	this->setStart(level.getStartR(), level.getStartC());
@@ -119,6 +142,14 @@ void PlayerManager::init()
 	newX = x = startC * height;
 	newY = y = startR * width;
 	velX = velY = 0;
+}
+void PlayerManager::reset()
+{
+	life = 3;
+	velX = velY = 0;
+	row = col = 0;
+	newX = newY = 0;
+	onGround = true;
 }
 
 void PlayerManager::setStart(int row, int col)
@@ -176,6 +207,15 @@ void PlayerManager::draw()
 {
 	iG::iSetColor(getColor());
 	iG::iCircle(getX() - tiles.offsetCols * getWidth() + getWidth() / 2, getY() - tiles.offsetRows * getHeight() + getHeight() / 2, getWidth() / 2);
+}
+
+void PlayerManager::drawLife()
+{
+	char temp[40];
+	snprintf(temp, 40, "LIFE :  %d", life);
+	iG::iSetColor(RED);
+	iG::iText(iG::iGetWindowWidth() - 200, iG::iGetWindowHeight() - 100, temp);
+
 }
 float PlayerManager::getRow()
 {

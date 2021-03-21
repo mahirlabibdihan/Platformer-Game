@@ -148,9 +148,11 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="igraphics.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="MenuManager.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="point.h" />
+    <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="Spike.h" />
     <ClInclude Include="SpikesManager.h" />
     <ClInclude Include="Tile.h" />
@@ -166,8 +168,10 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="point.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Spike.cpp" />
     <ClCompile Include="SpikesManager.cpp" />
     <ClCompile Include="Tile.cpp" />

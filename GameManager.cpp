@@ -3,14 +3,15 @@
 #include "TilesManager.h"
 #include "CameraManager.h"
 #include "PlayerManager.h"
+#include "ScoreManager.h"
 
+extern ScoreManager score;
 extern PlayerManager player;
 extern CameraManager camera;
 extern LevelManager level;
 extern TilesManager tiles;
 GameManager::GameManager()
 {
-	score = 0;
 }
 void GameManager::init()
 {
@@ -19,12 +20,12 @@ void GameManager::init()
 	{
 		level.load();
 	}
+
+	score.reset();
+	player.reset();
 	player.init();
 	camera.init();
 	tiles.init();
 	tiles.setField();
 }
-void GameManager::scoreUp()
-{
-	score += 10;
-}
+
