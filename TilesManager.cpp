@@ -19,17 +19,23 @@ TilesManager::TilesManager()
 
 void TilesManager::draw()
 {
+	// Calculate Bottom-Leftmost visible tile
 	offsetCols = camera.getX()/width- visibleCols / 2.0f;
 	offsetRows = camera.getY()/height - visibleRows / 2.0f;
 
+	// Clamp camera to game boundaries
 	if (offsetCols < 0) offsetCols = 0;
 	if (offsetRows < 0) offsetRows = 0;
 	if (offsetCols > cols - visibleCols) offsetCols = cols - visibleCols;
 	if (offsetRows > rows - visibleRows) offsetRows = rows - visibleRows;
 
+	// Get offsets for smooth movement
 	tileOffsetX = (offsetCols - (int)offsetCols) * width;
 	tileOffsetY = (offsetRows - (int)offsetRows) * height;
 
+		for (int j = 0; j <= visibleCols+1 && j + offsetCols < cols; j++)
+	cout << "Draw" <<" "<< visibleRows<<" "<< visibleCols<<endl;
+	// Draw visible tile map
 	for (int i = 0; i <= visibleRows+1 && i + offsetRows < rows; i++)
 	{
 		for (int j = 0; j <= visibleCols+1 && j + offsetCols < cols; j++)
@@ -40,12 +46,12 @@ void TilesManager::draw()
 			}
 			else if (tilesField[int(i + offsetRows)][int(j + offsetCols)].getType() == 'o')
 			{
-				cout << "COIN" << endl;
 				iG::iSetColor(YELLOW);
 				iG::iCircle(j * width - tileOffsetX + width / 2, i * height - tileOffsetY + height / 2, width / 2);
 			}
 			else
 			{
+				
 				iG::iSetColor(BLACK);
 				iG::iRectangle(j * width - tileOffsetX, i * height - tileOffsetY, width, height);
 			}
@@ -58,17 +64,20 @@ void TilesManager::init()
 	visibleRows = iG::iGetWindowHeight() / height;
 	visibleCols = iG::iGetWindowWidth() / width;
 }
-void TilesManager::setField()
+void TilesManager::set()
 {
 	spikes.clear();
 	rows = level.getHeight();
 	cols = level.getWidth();
+
+	// Allocating memory 
 	tilesField = new Tile * [rows];
 	for (int i = 0; i < rows; i++)
 	{
 		tilesField[i] = new Tile[cols];
 	}
 
+	// Transfering the information from levelfield to tilesfield
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
@@ -104,15 +113,6 @@ void TilesManager::setCell(int row, int col,char c)
 	
 	if (row <rows && row >-1 && col <cols && col >-1)
 		tilesField[row][col].setType(c);
-}
-
-
-char TilesManager::getCellXY(int x, int y)
-{
-	if (y / height > -1 && y / height <rows && x / width >-1 && x / width < cols)
-		return tilesField[y / height][x / width].getType();
-	else
-		return ' ';
 }
 
 int TilesManager::getWidth()

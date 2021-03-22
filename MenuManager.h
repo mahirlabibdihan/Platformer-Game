@@ -7,15 +7,16 @@ public:
 	enum menus { MAIN, PLAY, SCORE, GAMEOVER };
 	enum menuOption {PLAY_GAME,SCORE_BOARD,QUIT_GAME};
 	MenuManager();
-	int getMenu();
-	void setMenu(menus);
+	int get();
+	void set(menus);
+	void keyDown();
+	void keyUp();
+	void keyEnter();
+	void draw();
 	void drawPlayGame();
 	void drawMainMenu();
 	void drawGameOver();
-	void keyDown();
-	void keyUp();
-	void draw();
-	void keyEnter();
+	void drawScoreBoard();
 private:
 	menus menuName;
 	menuOption option;

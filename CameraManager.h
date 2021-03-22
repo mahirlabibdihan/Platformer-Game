@@ -3,12 +3,10 @@
 #include "Point.h"
 class CameraManager:public Point
 {
-	float row, col;
 public:
 	CameraManager();
 	void init();
+	void set();
 	void update();
-	float getRow();
-	float getCol();
 };
 #endif

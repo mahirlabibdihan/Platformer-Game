@@ -6,15 +6,15 @@
 class TilesManager
 {
 	Tile** tilesField;
-	int rows, cols;
-	int width, height;
-	int visibleRows, visibleCols;
+	int width, height;	// Of a single tile
+	int rows, cols;		// Total in a level
+	int visibleRows, visibleCols;	// Visible in screen
 	
 public:
 	float offsetRows, offsetCols;
 	float tileOffsetX, tileOffsetY;
 	TilesManager();
-	void setField();
+	void set();
 	char getCell(int, int);
 	void setCell(int, int, char);
 	char getCellXY(int, int);

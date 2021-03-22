@@ -2,8 +2,10 @@
 #define __SCORE_MANAGER__
 #include "GameManager.h"
 class ScoreManager {
-	int currentScore;
+	int currentScore,totalR;
 	string name;
+	int selectedR;
+	
 public:
 	ScoreManager();
 	void increase();
@@ -13,5 +15,9 @@ public:
 	void save();
 	void reset();
 	void nameEntry(unsigned char);
+	void keyDown();
+	void keyUp();
+	void edit();
+	void erase();
 };
 #endif

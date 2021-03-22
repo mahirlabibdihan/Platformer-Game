@@ -17,11 +17,11 @@ MenuManager::MenuManager()
 	menuName = MAIN;
 	option = PLAY_GAME;
 }
-int MenuManager::getMenu()
+int MenuManager::get()
 {
 	return menuName;
 }
-void MenuManager::setMenu(menus n)
+void MenuManager::set(menus n)
 {
 	menuName = n;
 }
@@ -83,8 +83,8 @@ void MenuManager::keyEnter()
 	if (option == PLAY_GAME)
 	{
 		menuName = PLAY;
-		level.reset();
-		game.init();
+		game.reset();
+		game.set();
 	}
 	else if (option == SCORE_BOARD)
 	{
@@ -119,4 +119,8 @@ void MenuManager::drawMainMenu()
 	}
 	iG::iSetColor(BLACK);
 	iG::iBigText(iG::iGetWindowWidth() / 2 - 350, iG::iGetWindowHeight() / 2-300, "Quit Game");
+}
+void MenuManager::drawScoreBoard()
+{
+	score.drawBoard();
 }

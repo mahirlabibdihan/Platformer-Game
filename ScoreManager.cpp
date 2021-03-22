@@ -6,6 +6,8 @@ extern MenuManager menu;
 ScoreManager::ScoreManager()
 {
 	currentScore = 0;
+	selectedR = 0;
+	totalR = 0;
 }
 void ScoreManager::increase()
 {
@@ -38,6 +40,7 @@ void ScoreManager::drawGameOver()
 
 void ScoreManager::drawBoard()
 {
+	int i;
 	glPushMatrix();
 	glTranslatef(iG::iGetWindowWidth() / 2, iG::iGetWindowHeight(), 0.0f);
 	glScalef(0.6f, 0.6f, 1.0f);
@@ -48,24 +51,35 @@ void ScoreManager::drawBoard()
 	ifstream in;
 	cout << "DRAW" << endl;
 	in.open("Data\\HIGHSCORE.txt", ios::in);
-	for (int i = 0;!in.eof();i++)
+	for (i = 0;!in.eof();i++)
 	{
 		string str, s;
 		in >> str >> s;
 		cout << str << endl;
 		{
 			cout << str << endl;
+
+			if (selectedR == i)
+			{
+				iG::iSetColor(YELLOW);
+				iG::iRectangle(iG::iGetWindowWidth() / 2 - 800, iG::iGetWindowHeight() - 225 - i * 83, 1600,70);
+			}
+			
 			glPushMatrix();
 			glTranslatef(iG::iGetWindowWidth() / 2, iG::iGetWindowHeight(), 0.0f);
 			glScalef(0.45f, 0.45f, 1.0f);
 			iG::iSetColor(BLACK);
-			iG::iBigText(-550- str.length()*35.0, - 500 - i * 185, str);
-			iG::iBigText(550 ,- 500 - i * 185, s);
+			iG::iBigText(-550- str.length()*35.0, - 470 - i * 185, str);
+			iG::iBigText(550 ,- 470 - i * 185, s);
 			glPopMatrix();
 		}
 	}
 	in.close();
+	iG::iSetColor(RED);
+	iG::iText(iG::iGetWindowWidth() / 2 - 150,20, "Press e to edit and d to delete");
+	totalR = i;
 }
+
 struct ScoreType
 {
 	string name;
@@ -111,6 +125,8 @@ void ScoreManager::save()
 	}
 	out << ScoreSheet[i].name << " " << ScoreSheet[i].score;
 	out.close();
+	totalR = ScoreSheet.size();
+
 }
 void ScoreManager::reset()
 {
@@ -125,7 +141,7 @@ void ScoreManager::nameEntry(unsigned char key)
 		{
 			save();
 			name.clear();
-			menu.setMenu(MenuManager::MAIN);
+			menu.set(MenuManager::MAIN);
 		}
 		break;
 	case '\b':
@@ -145,4 +161,93 @@ void ScoreManager::nameEntry(unsigned char key)
 		}
 		break;
 	}
+}
+
+void ScoreManager::keyUp()
+{
+	if (selectedR > 0)
+	{
+		selectedR--;
+	}
+	else
+	{
+		selectedR = totalR-1;
+	}
+}
+void ScoreManager::keyDown()
+{
+	if (selectedR < totalR-1)
+	{
+		selectedR++;
+	}
+	else
+	{
+		selectedR = 0;
+	}
+}
+
+
+void ScoreManager::erase()
+{
+	vector<ScoreType> ScoreSheet;
+	int i, j, k;
+	ifstream in;
+	in.open("Data\\HIGHSCORE.txt", ios::in);
+	while (!in.eof())
+	{
+		string str;
+		int s;
+		in >> str >> s;
+		if (str != "")
+		{
+			ScoreSheet.push_back({ str, s });
+		}
+	}
+	in.close();
+
+	ScoreSheet.erase(ScoreSheet.begin() + selectedR);
+
+	ofstream out;
+	out.open("Data\\HIGHSCORE.txt", ios::out);
+	for (i = 0; i < ScoreSheet.size() - 1 && i < 9; i++)
+	{
+		out << ScoreSheet[i].name << " " << ScoreSheet[i].score << endl;
+	}
+	out << ScoreSheet[i].name << " " << ScoreSheet[i].score;
+	out.close();
+	totalR = ScoreSheet.size();
+}
+
+void ScoreManager::edit()
+{
+	vector<ScoreType> ScoreSheet;
+	int i, j, k;
+	ifstream in;
+	in.open("Data\\HIGHSCORE.txt", ios::in);
+	while (!in.eof())
+	{
+		string str;
+		int s;
+		in >> str >> s;
+		if (str != "")
+		{
+			ScoreSheet.push_back({ str, s });
+		}
+	}
+	in.close();
+
+	currentScore = ScoreSheet[selectedR].score;
+	ScoreSheet.erase(ScoreSheet.begin() + selectedR);
+
+	ofstream out;
+	out.open("Data\\HIGHSCORE.txt", ios::out);
+	for (i = 0; i < ScoreSheet.size() - 1 && i < 9; i++)
+	{
+		out << ScoreSheet[i].name << " " << ScoreSheet[i].score << endl;
+	}
+	out << ScoreSheet[i].name << " " << ScoreSheet[i].score;
+	out.close();
+	totalR = ScoreSheet.size();
+
+	menu.set(MenuManager::GAMEOVER);
 }

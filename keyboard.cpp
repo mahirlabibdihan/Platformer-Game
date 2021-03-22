@@ -11,7 +11,7 @@ extern PlayerManager player;
 
 void iG::iKeyboard(unsigned char key)
 {
-	switch (menu.getMenu())
+	switch (menu.get())
 	{
 	case MenuManager::MAIN:
 		switch (key)
@@ -28,7 +28,7 @@ void iG::iKeyboard(unsigned char key)
 		switch (key)
 		{
 		case '\b':
-			menu.setMenu(MenuManager::MAIN);
+			menu.set(MenuManager::MAIN);
 			break;
 		}
 		break;
@@ -36,7 +36,13 @@ void iG::iKeyboard(unsigned char key)
 		switch (key)
 		{
 		case '\b':
-			menu.setMenu(MenuManager::MAIN);
+			menu.set(MenuManager::MAIN);
+			break;
+		case 'd':
+			score.erase();
+			break;
+		case 'e':
+			score.edit();
 			break;
 		}
 		break;
@@ -44,12 +50,12 @@ void iG::iKeyboard(unsigned char key)
 		score.nameEntry(key);
 		break;
 	}
-	cout << "Menu:" << menu.getMenu() << endl;
+	cout << "Menu:" << menu.get() << endl;
 }
 
 void iG::iSpecialKeyboard(unsigned char key)
 {
-	switch (menu.getMenu())
+	switch (menu.get())
 	{
 	case MenuManager::MAIN:
 		switch (key)
@@ -78,10 +84,22 @@ void iG::iSpecialKeyboard(unsigned char key)
 			player.moveRight();
 			break;
 		case GLUT_KEY_END:
-			menu.setMenu(MenuManager::MAIN);
+			menu.set(MenuManager::MAIN);
 			break;
 		}
 		break;
+	case MenuManager::SCORE:
+		switch (key)
+		{
+		case GLUT_KEY_UP:
+			score.keyUp();
+			break;
+		case GLUT_KEY_DOWN:
+			score.keyDown();
+			break;
+		}
 	}
+
+	
 	
 }

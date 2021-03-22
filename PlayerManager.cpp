@@ -71,7 +71,7 @@ void PlayerManager::update()
 
 	if (velX > 0)
 	{
-		if (tiles.getCell(floor(y / height), ceil(newX / width)) == '#' || tiles.getCell(ceil(y / height), ceil(newX / width)) == '#')
+		if (tiles.getCell(floor(newY / height), ceil(newX / width)) == '#' || tiles.getCell(ceil(newY / height), ceil(newX / width)) == '#')
 		{
 			newX = ceil(x / width) * width;
 			velX = 0;
@@ -79,7 +79,7 @@ void PlayerManager::update()
 	}
 	if (velX < 0)
 	{
-		if (tiles.getCell(floor(y / height), floor(newX / width)) == '#' || tiles.getCell(ceil(y / height), floor(newX / width)) == '#')
+		if (tiles.getCell(floor(newY / height), floor(newX / width)) == '#' || tiles.getCell(ceil(newY / height), floor(newX / width)) == '#')
 		{
 			newX = floor(x / width) * width;
 			velX = 0;
@@ -112,43 +112,37 @@ void PlayerManager::update()
 	y = newY;
 	if (spikes.checkCollision())
 	{
-		init();
+		set();
 		life--;
 	}
 	if (!life)
 	{
-		menu.setMenu(MenuManager::GAMEOVER);
+		menu.set(MenuManager::GAMEOVER);
 	}
 	if (x == endC * width && y == endR * height)
 	{
-		level.setTotalLevels(2);
-		if (level.levelUp())
-		{
-			level.load();
-		}
-		player.init();
-		camera.init();
-		tiles.init();
-		tiles.setField();
+		game.set();
 	}
+
 }
 void PlayerManager::init()
 {	
-	
 	this->setHeight(tiles.getHeight());
 	this->setWidth(tiles.getWidth());
+}
+
+void PlayerManager::set()
+{
 	this->setStart(level.getStartR(), level.getStartC());
 	this->setEnd(level.getEndR(), level.getEndC());
 	newX = x = startC * height;
 	newY = y = startR * width;
-	velX = velY = 0;
 }
 void PlayerManager::reset()
 {
 	life = 3;
 	velX = velY = 0;
-	row = col = 0;
-	newX = newY = 0;
+	x = y = newX = newY = 0;
 	onGround = true;
 }
 
@@ -187,7 +181,7 @@ void PlayerManager::moveRight()
 	}
 	else
 	{
-		velX += 2.0f;
+		velX += 3.0f;
 	}
 
 }
@@ -199,7 +193,7 @@ void PlayerManager::moveLeft()
 	}
 	else
 	{
-		velX -= 2.0f;
+		velX -= 3.0f;
 	}
 }
 

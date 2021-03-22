@@ -6,23 +6,15 @@ CameraManager::CameraManager()
 {
 
 }
-void CameraManager::init()
+void CameraManager::set()
 {
 	setPoint(player.getX(), player.getY());
-	row = player.getRow();
-	col = player.getCol();
+}
+void CameraManager::init()
+{
+	
 }
 void CameraManager::update()
 {
 	setPoint(player.getX(), player.getY());
-	row = player.getRow();
-	col = player.getCol();
-}
-float CameraManager::getRow()
-{
-	return row;
-}
-float CameraManager::getCol()
-{
-	return col;
 }

@@ -39,8 +39,8 @@ public:
 		iSpecialKeyboard(key);
 		glutPostRedisplay();
 	}
-	// Clears the screen
-	static void iClear()
+
+	static void iClear()	// Clears the screen
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 		glMatrixMode(GL_MODELVIEW);
@@ -109,6 +109,7 @@ public:
 			glutStrokeCharacter(font, str[i]); // GLUT_STROKE_ROMAN  , GLUT_STROKE_MONO_ROMAN
 		glPopMatrix();
 	}
+	// Overloaded
 	static void iBigText(double x, double y, string str, void* font = GLUT_STROKE_ROMAN)
 	{
 		glPushMatrix();
@@ -120,29 +121,23 @@ public:
 	}
 
 	// Sets color for drawing
-	static void iSetColor(double r, double g, double b, double a=1.0)
+	static void iSetColor(double r, double g, double b, double a = 1.0)
 	{
-		double mmx = 255;
 		// r,g,b should be 0 to 1
-		if (mmx > 0) {
-			r /= mmx;
-			g /= mmx;
-			b /= mmx;
-		}
-		glColor4f(r, g, b,a);
+		r /= 255.0;
+		g /= 255.0;
+		b /= 255.0;
+		glColor4f(r, g, b, a);
 	}
 	// Overloaded
-	static void iSetColor(tuple<double, double, double> rgb, double a=1.0)
+	static void iSetColor(tuple<double, double, double> rgb, double a = 1.0)
 	{
 		double r = get<0>(rgb), g = get<1>(rgb), b = get<2>(rgb);
-		double mmx = 255;
 		// r,g,b should be 0 to 1
-		if (mmx > 0) {
-			r /= mmx;
-			g /= mmx;
-			b /= mmx;
-		}
-		glColor4f(r, g, b,a);
+		r /= 255.0;
+		g /= 255.0;
+		b /= 255.0;
+		glColor4f(r, g, b, a);
 	}
 
 	// Sets Background color
@@ -156,7 +151,8 @@ public:
 	// Draw Circle
 	static void iCircle(double x, double y, double r, int slices = 100)
 	{
-		double t, dt=2*PI/slices;
+		// Draw circle filler
+		double t, dt = 2 * PI / slices;
 		glBegin(GL_POLYGON);
 		for (t = 0; t <= 2 * PI + dt; t += dt)
 		{
@@ -164,6 +160,7 @@ public:
 		}
 		glEnd();
 
+		// Draw Circle border
 		glColor4f(0, 0, 0, 1);
 		glBegin(GL_LINE_STRIP);
 		for (t = 0; t <= 2 * PI + dt; t += dt)
@@ -182,6 +179,7 @@ public:
 		x2 = x1 + width;
 		y2 = y1 + height;
 
+		// Draw rectangle filler
 		glBegin(GL_POLYGON);
 		glVertex2f(x1, y1);
 		glVertex2f(x2, y1);
@@ -190,6 +188,7 @@ public:
 		glVertex2f(x1, y1);
 		glEnd();
 
+		// Draw rectangle border
 		glColor4f(0, 0, 0, 1);
 		glBegin(GL_LINE_STRIP);
 		glVertex2f(x1, y1);

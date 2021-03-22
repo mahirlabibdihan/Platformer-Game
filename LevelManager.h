@@ -5,7 +5,11 @@ class LevelManager
 {
 	int levelNum,totalLevels;
 	int levelWidth,levelHeight;
+
+	// Starting and ending position of a level
 	int startR, startC, endR, endC;
+
+
 	char** levelField;
 	string levels[3]=
 	{
@@ -16,7 +20,8 @@ class LevelManager
 public:
 	LevelManager();
 	~LevelManager();
-	void load();
+	void init();
+	void set();
 	void setTotalLevels(int);
 	int getWidth();
 	int getHeight();

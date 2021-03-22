@@ -13,11 +13,15 @@ LevelManager::~LevelManager()
 	}
 	delete[] levelField;
 }
+void LevelManager::init()
+{
+	totalLevels = 2;
+}
 void LevelManager::setTotalLevels(int n)
 {
 	totalLevels = n;
 }
-void LevelManager::load()
+void LevelManager::set()
 {
 	ifstream in(levels[levelNum], ios::in);
 	if (!in)
