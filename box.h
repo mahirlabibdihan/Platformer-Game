@@ -4,14 +4,14 @@
 #include "GameManager.h"
 class Box: public Object {
 protected:
-	int height, width;
+	GLfloat height, width;
 public:
 	Box();
-	Box(int width, int height);
-	void setWidth(int width);
-	void setHeight(int height);
-	int getHeight();
-	int getWidth();
+	Box(GLfloat width, GLfloat height);
+	void setWidth(GLfloat width);
+	void setHeight(GLfloat height);
+	GLfloat getHeight();
+	GLfloat getWidth();
 	void draw();
 	void setBounds(int x, int y, int width, int height);
 };

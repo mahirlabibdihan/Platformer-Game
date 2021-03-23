@@ -7,7 +7,7 @@ LevelManager::LevelManager()
 }
 LevelManager::~LevelManager()
 {
-	for (int i = 0; i < levelHeight; i++)
+	for (int i = 0; i < rows; i++)
 	{
 		delete[] levelField[i];
 	}
@@ -29,19 +29,19 @@ void LevelManager::set()
 		cout << "File Reading error" << endl;
 		return;
 	}
-	in >> levelHeight >> levelWidth;
+	in >> rows >> cols;
 	in >> startR >> startC;
 	in >> endR >> endC;
-	levelField = new char* [levelHeight];
-	for (int i = 0; i < levelHeight; i++)
+	levelField = new char* [rows];
+	for (int i = 0; i < rows; i++)
 	{
-		levelField[i] = new char[levelWidth];
+		levelField[i] = new char[cols];
 	}
 
-	for (int i = levelHeight - 1; i > -1; i--)
+	for (int i = rows - 1; i > -1; i--)
 	{
 		in.ignore(10, '\n');
-		for (int j = 0; j < levelWidth; j++)
+		for (int j = 0; j < cols; j++)
 		{
 			in >> levelField[i][j];
 			cout << levelField[i][j] << " ";
@@ -50,13 +50,13 @@ void LevelManager::set()
 	}
 	in.close();
 }
-int LevelManager::getWidth()
+int LevelManager::getCols()
 {
-	return levelWidth;
+	return cols;
 }
-int LevelManager::getHeight()
+int LevelManager::getRows()
 {
-	return levelHeight;
+	return rows;
 }
 bool LevelManager::levelUp()
 {
@@ -67,15 +67,10 @@ bool LevelManager::levelUp()
 	}
 	return false;
 }
-char LevelManager::get(int row,int col)
+char LevelManager::getCell(int row,int col)
 {
 	return levelField[row][col];
 }
-void LevelManager::set(int row,int col, char c)
-{
-	levelField[row][col]=c;
-}
-
 int LevelManager::getStartR()
 {
 	return startR;
@@ -95,7 +90,7 @@ int LevelManager::getEndC()
 
 void LevelManager::reset()
 {
-	levelNum = totalLevels=  0;
+	levelNum =  0;
 }
 
 void LevelManager::draw()

@@ -20,8 +20,8 @@ TilesManager::TilesManager()
 void TilesManager::draw()
 {
 	// Calculate Bottom-Leftmost visible tile
-	offsetCols = camera.getX()/width- visibleCols / 2.0f;
-	offsetRows = camera.getY()/height - visibleRows / 2.0f;
+	offsetCols = camera.getX() / width - visibleCols / 2.0f;
+	offsetRows = camera.getY() / height - visibleRows / 2.0f;
 
 	// Clamp camera to game boundaries
 	if (offsetCols < 0) offsetCols = 0;
@@ -33,16 +33,14 @@ void TilesManager::draw()
 	tileOffsetX = (offsetCols - (int)offsetCols) * width;
 	tileOffsetY = (offsetRows - (int)offsetRows) * height;
 
-		for (int j = 0; j <= visibleCols+1 && j + offsetCols < cols; j++)
-	cout << "Draw" <<" "<< visibleRows<<" "<< visibleCols<<endl;
 	// Draw visible tile map
-	for (int i = 0; i <= visibleRows+1 && i + offsetRows < rows; i++)
+	for (int i = 0; i <= visibleRows + 1 && i + offsetRows < rows; i++)
 	{
-		for (int j = 0; j <= visibleCols+1 && j + offsetCols < cols; j++)
+		for (int j = 0; j <= visibleCols + 1 && j + offsetCols < cols; j++)
 		{
 			if (tilesField[int(i + offsetRows)][int(j + offsetCols)].getType() == '.')
 			{
-			
+
 			}
 			else if (tilesField[int(i + offsetRows)][int(j + offsetCols)].getType() == 'o')
 			{
@@ -51,7 +49,7 @@ void TilesManager::draw()
 			}
 			else
 			{
-				
+
 				iG::iSetColor(BLACK);
 				iG::iRectangle(j * width - tileOffsetX, i * height - tileOffsetY, width, height);
 			}
@@ -67,8 +65,8 @@ void TilesManager::init()
 void TilesManager::set()
 {
 	spikes.clear();
-	rows = level.getHeight();
-	cols = level.getWidth();
+	rows = level.getRows();
+	cols = level.getCols();
 
 	// Allocating memory 
 	tilesField = new Tile * [rows];
@@ -82,19 +80,13 @@ void TilesManager::set()
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			if (level.get(i, j) == 'x')
+			if (level.getCell(i, j) == 'x')
 			{
 				spikes.addSpike(j * width, i * height);
 			}
 			else
 			{
-				tilesField[i][j].setType(level.get(i, j));
-				if (level.get(i, j) == '.')
-					tilesField[i][j].setColor(GREEN);
-				else if (level.get(i, j) == 'o')
-					tilesField[i][j].setColor(YELLOW);
-				else
-					tilesField[i][j].setColor(BLACK);
+				tilesField[i][j].setType(level.getCell(i, j));
 			}
 		}
 	}
@@ -108,9 +100,9 @@ char TilesManager::getCell(int row, int col)
 		return '#';
 }
 
-void TilesManager::setCell(int row, int col,char c)
+void TilesManager::setCell(int row, int col, char c)
 {
-	
+
 	if (row <rows && row >-1 && col <cols && col >-1)
 		tilesField[row][col].setType(c);
 }

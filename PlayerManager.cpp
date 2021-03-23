@@ -126,7 +126,7 @@ void PlayerManager::update()
 
 }
 void PlayerManager::init()
-{	
+{
 	this->setHeight(tiles.getHeight());
 	this->setWidth(tiles.getWidth());
 }

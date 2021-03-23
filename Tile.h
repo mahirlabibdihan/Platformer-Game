@@ -6,5 +6,4 @@ public:
 	Tile();
 	void setType(char);
 	char getType();
-	void draw();
 };

@@ -40,6 +40,7 @@ void GameManager::set()
 
 void GameManager::reset()
 {
+	level.reset();
 	score.reset();
 	player.reset();
 }

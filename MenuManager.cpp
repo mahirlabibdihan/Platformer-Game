@@ -101,24 +101,24 @@ void MenuManager::drawMainMenu()
 	if (option == PLAY_GAME)
 	{
 		iG::iSetColor(YELLOW);
-		iG::iRectangle(iG::iGetWindowWidth() / 2 - 400, iG::iGetWindowHeight() / 2 + 150,800, 180);
+		iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f + 150,800.0f, 180.0f);
 	}
 	iG::iSetColor(BLACK);
-	iG::iBigText(iG::iGetWindowWidth() / 2 - 350, iG::iGetWindowHeight() / 2 + 200,"Play Game");
+	iG::iBigText(iG::iGetWindowWidth() / 2.0f - 350, iG::iGetWindowHeight() / 2.0f + 200,"Play Game");
 	if (option == SCORE_BOARD)
 	{
 		iG::iSetColor(YELLOW);
-		iG::iRectangle(iG::iGetWindowWidth() / 2 - 450, iG::iGetWindowHeight() / 2 -100, 900, 180);
+		iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 450, iG::iGetWindowHeight() / 2.0f -100, 900.0f, 180.0f);
 	}
 	iG::iSetColor(BLACK);
-	iG::iBigText(iG::iGetWindowWidth() / 2 - 400, iG::iGetWindowHeight() / 2 -50, "Score Board");
+	iG::iBigText(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f -50, "Score Board");
 	if (option == QUIT_GAME)
 	{
 		iG::iSetColor(YELLOW);
-		iG::iRectangle(iG::iGetWindowWidth() / 2 - 400, iG::iGetWindowHeight() / 2 - 350, 800, 180);
+		iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f - 350, 800, 180);
 	}
 	iG::iSetColor(BLACK);
-	iG::iBigText(iG::iGetWindowWidth() / 2 - 350, iG::iGetWindowHeight() / 2-300, "Quit Game");
+	iG::iBigText(iG::iGetWindowWidth() / 2.0f - 350, iG::iGetWindowHeight() / 2.0f-300, "Quit Game");
 }
 void MenuManager::drawScoreBoard()
 {

@@ -4,24 +4,24 @@ Box::Box()
 	this->width = 0;
 	this->height = 0;
 }
-Box::Box(int width, int height)
+Box::Box(GLfloat width, GLfloat height)
 {
 	this->width = width;
 	this->height = height;
 }
-void Box::setWidth(int width)
+void Box::setWidth(GLfloat width)
 {
 	this->width = width;
 }
-void Box::setHeight(int height)
+void Box::setHeight(GLfloat height)
 {
 	this->height = height;
 }
-int Box::getHeight()
+GLfloat Box::getHeight()
 {
 	return this->height;
 }
-int Box::getWidth()
+GLfloat Box::getWidth()
 {
 	return this->width;
 }

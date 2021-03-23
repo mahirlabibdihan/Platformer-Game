@@ -12,7 +12,6 @@ void Spike::init()
 }
 void Spike::setCenter(float x,float y)
 {
-	cout << "Centered" << endl;
 	setPoint(x, y);
 	centerX = x;
 }

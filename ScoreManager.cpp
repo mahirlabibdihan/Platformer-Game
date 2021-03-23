@@ -16,11 +16,11 @@ void ScoreManager::increase()
 void ScoreManager::draw()
 {
 	iG::iSetColor(YELLOW);
-	iG::iRectangle(iG::iGetWindowWidth() - 250, iG::iGetWindowHeight() - 180, 250, 180);
+	iG::iRectangle(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 180.0f, 250.0f, 180.0f);
 	char temp[40];
 	snprintf(temp, 40, "SCORE :  %d", currentScore);
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() - 200, iG::iGetWindowHeight() - 50, temp);
+	iG::iText(iG::iGetWindowWidth() - 200.0f, iG::iGetWindowHeight() - 50.0f, temp);
 	
 }
 void ScoreManager::drawGameOver()
@@ -28,10 +28,10 @@ void ScoreManager::drawGameOver()
 	char temp[40];
 	snprintf(temp, 40, "SCORE : %d", currentScore);
 	iG::iSetColor(BLACK);
-	iG::iBigText(iG::iGetWindowWidth()/2 - 530, iG::iGetWindowHeight() - 300, temp);
+	iG::iBigText(iG::iGetWindowWidth()/2.0f - 530, iG::iGetWindowHeight() - 300.0f, temp);
 
 	glPushMatrix();
-	glTranslatef(iG::iGetWindowWidth() / 2 -630, iG::iGetWindowHeight() / 2-30 , 0.0f);
+	glTranslatef(iG::iGetWindowWidth() / 2.0f -630, iG::iGetWindowHeight() / 2.0f-30 , 0.0f);
 	glScalef(0.5f, 0.5f, 1.0f);
 	iG::iSetColor(BLACK);
 	iG::iBigText(0, 0,name);
@@ -42,7 +42,7 @@ void ScoreManager::drawBoard()
 {
 	int i;
 	glPushMatrix();
-	glTranslatef(iG::iGetWindowWidth() / 2, iG::iGetWindowHeight(), 0.0f);
+	glTranslatef(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight(), 0.0f);
 	glScalef(0.6f, 0.6f, 1.0f);
 	iG::iSetColor(RED);
 	iG::iBigText(-600, -200, "NAME");
@@ -62,21 +62,21 @@ void ScoreManager::drawBoard()
 			if (selectedR == i)
 			{
 				iG::iSetColor(YELLOW);
-				iG::iRectangle(iG::iGetWindowWidth() / 2 - 800, iG::iGetWindowHeight() - 225 - i * 83, 1600,70);
+				iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 800, iG::iGetWindowHeight() - 225.0f - i * 83, 1600.0f,70.0f);
 			}
 			
 			glPushMatrix();
-			glTranslatef(iG::iGetWindowWidth() / 2, iG::iGetWindowHeight(), 0.0f);
+			glTranslatef(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight(), 0.0f);
 			glScalef(0.45f, 0.45f, 1.0f);
 			iG::iSetColor(BLACK);
-			iG::iBigText(-550- str.length()*35.0, - 470 - i * 185, str);
-			iG::iBigText(550 ,- 470 - i * 185, s);
+			iG::iBigText(-550.0f- str.length()*35.0, - 470.0f - i * 185, str);
+			iG::iBigText(550.0f ,- 470.0f - i * 185, s);
 			glPopMatrix();
 		}
 	}
 	in.close();
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() / 2 - 150,20, "Press e to edit and d to delete");
+	iG::iText(iG::iGetWindowWidth() / 2.0f - 150,20.0f, "Press e to edit and d to delete");
 	totalR = i;
 }
 
@@ -149,9 +149,6 @@ void ScoreManager::nameEntry(unsigned char key)
 		{
 			name.pop_back();
 		}
-	case 27:
-		// Menu = MAIN;
-		break;
 	case ' ':
 		break;
 	default:

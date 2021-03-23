@@ -4,7 +4,7 @@
 class LevelManager
 {
 	int levelNum,totalLevels;
-	int levelWidth,levelHeight;
+	int cols,rows;
 
 	// Starting and ending position of a level
 	int startR, startC, endR, endC;
@@ -23,15 +23,14 @@ public:
 	void init();
 	void set();
 	void setTotalLevels(int);
-	int getWidth();
-	int getHeight();
+	int getCols();
+	int getRows();
 	int getStartR();
 	int getStartC();
 	int getEndR();
 	int getEndC();
 	bool levelUp();
-	char get(int,int);
-	void set(int,int,char);
+	char getCell(int,int);
 	void draw();
 	void reset();
 };
