@@ -8,6 +8,7 @@ CameraManager::CameraManager()
 }
 void CameraManager::set()
 {
+	// Link camera to player position
 	setPoint(player.getX(), player.getY());
 }
 void CameraManager::init()

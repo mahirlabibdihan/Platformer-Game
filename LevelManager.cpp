@@ -3,10 +3,13 @@
 LevelManager::LevelManager()
 {
 	levelNum = totalLevels = 0;
+	cols = rows = 0;
+	startR = startC = endR = endC = 0;
 	levelField = NULL;
 }
 LevelManager::~LevelManager()
 {
+	// Deallocating memory
 	for (int i = 0; i < rows; i++)
 	{
 		delete[] levelField[i];
@@ -21,6 +24,7 @@ void LevelManager::setTotalLevels(int n)
 {
 	totalLevels = n;
 }
+
 void LevelManager::set()
 {
 	ifstream in(levels[levelNum], ios::in);
@@ -32,6 +36,8 @@ void LevelManager::set()
 	in >> rows >> cols;
 	in >> startR >> startC;
 	in >> endR >> endC;
+
+	// Allocating memory
 	levelField = new char* [rows];
 	for (int i = 0; i < rows; i++)
 	{
@@ -44,9 +50,7 @@ void LevelManager::set()
 		for (int j = 0; j < cols; j++)
 		{
 			in >> levelField[i][j];
-			cout << levelField[i][j] << " ";
 		}
-		cout << endl;
 	}
 	in.close();
 }
@@ -60,14 +64,14 @@ int LevelManager::getRows()
 }
 bool LevelManager::levelUp()
 {
-	if(levelNum <totalLevels)
+	if (levelNum < totalLevels)
 	{
 		levelNum++;
 		return true;
 	}
 	return false;
 }
-char LevelManager::getCell(int row,int col)
+char LevelManager::getCell(int row, int col)
 {
 	return levelField[row][col];
 }
@@ -90,7 +94,7 @@ int LevelManager::getEndC()
 
 void LevelManager::reset()
 {
-	levelNum =  0;
+	levelNum = 0;
 }
 
 void LevelManager::draw()

@@ -5,12 +5,12 @@ class LevelManager
 {
 	int levelNum,totalLevels;
 	int cols,rows;
-
-	// Starting and ending position of a level
-	int startR, startC, endR, endC;
-
+	
+	int startR, startC, endR, endC;	// Starting and ending position of a level
 
 	char** levelField;
+
+	// Level text files
 	string levels[3]=
 	{
 		"",
@@ -21,7 +21,8 @@ public:
 	LevelManager();
 	~LevelManager();
 	void init();
-	void set();
+	void set();	// Reading level from file
+	void reset();
 	void setTotalLevels(int);
 	int getCols();
 	int getRows();
@@ -31,7 +32,6 @@ public:
 	int getEndC();
 	bool levelUp();
 	char getCell(int,int);
-	void draw();
-	void reset();
+	void draw();	// Draw level number in top right corner of game screen
 };
 #endif

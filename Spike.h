@@ -8,7 +8,7 @@ public:
 	Spike();
 	void init();
 	void setCenter(float,float);
-	void update();
+	void update();		// Move spike left and right
 };
-#endif // !__SPIKE__
+#endif
 

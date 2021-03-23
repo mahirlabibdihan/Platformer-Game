@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 {
 	glutInit(&argc, argv);	// Initializing glut
 	iG::windowSetup();	// Setting window
-	game.init();
+	game.init();	// Initializing game
 	iG::iInitialize("Game");	// Initializing proogram
 	glutTimerFunc(30, update, 0);   // Registering timer callback
 	glutMainLoop();		// Start program

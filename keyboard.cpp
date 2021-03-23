@@ -1,12 +1,10 @@
 #include "GameManager.h"
 #include "PlayerManager.h"
-#include "CameraManager.h"
 #include "MenuManager.h"
 #include "ScoreManager.h"
 
 extern ScoreManager score;
 extern MenuManager menu;
-extern CameraManager camera;
 extern PlayerManager player;
 
 void iG::iKeyboard(unsigned char key)
@@ -50,7 +48,6 @@ void iG::iKeyboard(unsigned char key)
 		score.nameEntry(key);
 		break;
 	}
-	cout << "Menu:" << menu.get() << endl;
 }
 
 void iG::iSpecialKeyboard(unsigned char key)
@@ -98,8 +95,5 @@ void iG::iSpecialKeyboard(unsigned char key)
 			score.keyDown();
 			break;
 		}
-	}
-
-	
-	
+	}	
 }

@@ -18,7 +18,7 @@ public:
 	PlayerManager();
 	void update();
 	void draw();
-	void drawLife();
+	void drawLife();	// Draw remaining lives in top right corner of game screen
 	void moveUp();
 	void moveDown();
 	void moveRight();

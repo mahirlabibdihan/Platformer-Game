@@ -2,7 +2,6 @@
 #define __MENU_MANAGER__
 #include "GameManager.h"
 class MenuManager {
-	
 public:
 	enum menus { MAIN, PLAY, SCORE, GAMEOVER };
 	enum menuOption {PLAY_GAME,SCORE_BOARD,QUIT_GAME};

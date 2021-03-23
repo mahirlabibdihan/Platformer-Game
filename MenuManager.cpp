@@ -96,8 +96,7 @@ void MenuManager::keyEnter()
 	}
 }
 void MenuManager::drawMainMenu()
-{
-	
+{	
 	if (option == PLAY_GAME)
 	{
 		iG::iSetColor(YELLOW);
@@ -105,6 +104,9 @@ void MenuManager::drawMainMenu()
 	}
 	iG::iSetColor(BLACK);
 	iG::iBigText(iG::iGetWindowWidth() / 2.0f - 350, iG::iGetWindowHeight() / 2.0f + 200,"Play Game");
+
+
+
 	if (option == SCORE_BOARD)
 	{
 		iG::iSetColor(YELLOW);
@@ -112,6 +114,9 @@ void MenuManager::drawMainMenu()
 	}
 	iG::iSetColor(BLACK);
 	iG::iBigText(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f -50, "Score Board");
+
+
+
 	if (option == QUIT_GAME)
 	{
 		iG::iSetColor(YELLOW);

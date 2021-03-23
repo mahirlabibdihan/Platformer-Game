@@ -16,7 +16,6 @@ void SpikesManager::addSpike(float x,float y)
 	temp.setCenter(x, y);
 	temp.setHeight(tiles.getHeight());
 	temp.setWidth(tiles.getWidth());
-	cout << temp.getX() << " " << temp.getY() << endl;
 	s.push_back(temp);
 }
 void SpikesManager::update()

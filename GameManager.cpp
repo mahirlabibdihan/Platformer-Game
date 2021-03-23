@@ -34,7 +34,7 @@ void GameManager::set()
 	}
 	else
 	{
-		menu.set(MenuManager::GAMEOVER);
+		menu.set(MenuManager::GAMEOVER);	// Player finished the game
 	}
 }
 

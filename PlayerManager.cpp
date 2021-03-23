@@ -24,33 +24,31 @@ PlayerManager::PlayerManager()
 	row = col = 0;
 	newX = newY = 0;
 	onGround = true;
-	this->setPoint(0, 0);
-	this->setColor(RED);
+	setColor(RED);
 }
 void PlayerManager::update()
 {
+	// Clamp velocity
 	if (velX > 15.0f) velX = 10.0f;
 	if (velX < -15.0f) velX = -10.0f;
-
 	if (velY < -100.0f) velY = -100.0f;
 
+	// Gravity
 	moveDown();
 
+	// Calculate potential new position
 	newX = round(x + velX);
 	newY = round(y + velY);
 
+	// Friction
 	if (onGround)
 	{
 		velX *= .9;
+		if (fabs(velX) < .1) velX = 0;
 	}
-
-	if (fabs(velX) < .1) velX = 0;
-
-	cout << newX << endl;
-
-
-
-	if (velY < 0)
+	
+	// Check for Collision with wall
+	if (velY < 0)	// Moving down
 	{
 		if (tiles.getCell(floor(newY / height), floor(x / width)) == '#' || tiles.getCell(floor(newY / height), ceil(x / width)) == '#')
 		{
@@ -59,8 +57,8 @@ void PlayerManager::update()
 			onGround = true;
 		}
 	}
-
-	if (velY > 0)
+			
+	if (velY > 0)	// Moving up
 	{
 		if (tiles.getCell(ceil(newY / height), floor(x / width)) == '#' || tiles.getCell(ceil(newY / height), ceil(x / width)) == '#')
 		{
@@ -69,7 +67,7 @@ void PlayerManager::update()
 		}
 	}
 
-	if (velX > 0)
+	if (velX > 0)	// Moving right
 	{
 		if (tiles.getCell(floor(newY / height), ceil(newX / width)) == '#' || tiles.getCell(ceil(newY / height), ceil(newX / width)) == '#')
 		{
@@ -77,7 +75,7 @@ void PlayerManager::update()
 			velX = 0;
 		}
 	}
-	if (velX < 0)
+	if (velX < 0)	// Moving left
 	{
 		if (tiles.getCell(floor(newY / height), floor(newX / width)) == '#' || tiles.getCell(ceil(newY / height), floor(newX / width)) == '#')
 		{
@@ -85,6 +83,8 @@ void PlayerManager::update()
 			velX = 0;
 		}
 	}
+
+	// Check for pickups
 	if (tiles.getCell(floor(newY / height), floor(newX / width)) == 'o')
 	{
 		tiles.setCell(floor(newY / height), floor(newX / width), '.');
@@ -108,17 +108,25 @@ void PlayerManager::update()
 		tiles.setCell(ceil(newY / height), ceil(newX / width), '.');
 		score.increase();
 	}
+
+	// Apply new position
 	x = newX;
 	y = newY;
+
+	// Check collision with spikes
 	if (spikes.checkCollision())
 	{
 		set();
 		life--;
 	}
+
+	// Check if game is over
 	if (!life)
 	{
 		menu.set(MenuManager::GAMEOVER);
 	}
+
+	// Check if level is complete
 	if (x == endC * width && y == endR * height)
 	{
 		game.set();
@@ -135,6 +143,7 @@ void PlayerManager::set()
 {
 	this->setStart(level.getStartR(), level.getStartC());
 	this->setEnd(level.getEndR(), level.getEndC());
+
 	newX = x = startC * height;
 	newY = y = startR * width;
 }
@@ -161,6 +170,8 @@ void PlayerManager::setPosition(float row, float col)
 	newX = x = col * height;
 	newY = y = row * width;
 }
+
+// Jump
 void PlayerManager::moveUp()
 {
 	if (velY == 0 && onGround)
@@ -169,6 +180,8 @@ void PlayerManager::moveUp()
 		onGround = false;
 	}
 }
+
+// Gravity
 void PlayerManager::moveDown()
 {
 	velY -= 1.0f;
@@ -179,19 +192,18 @@ void PlayerManager::moveRight()
 	{
 		velX += 5.0f;
 	}
-	else
+	else  // In the air
 	{
 		velX += 3.0f;
 	}
-
 }
 void PlayerManager::moveLeft()
 {
 	if (velY == 0)
 	{
 		velX -= 5.0f;
-	}
-	else
+	}		
+	else  // In the air
 	{
 		velX -= 3.0f;
 	}
