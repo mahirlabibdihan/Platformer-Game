@@ -21,7 +21,6 @@ void Color::setColor(tuple<GLfloat, GLfloat, GLfloat>rgb)
 	this->g = get<1>(rgb);
 	this->b = get<2>(rgb);
 }
-
 tuple<GLfloat, GLfloat, GLfloat> Color::getColor()
 {
 	return make_tuple(r, g, b);
@@ -31,15 +30,15 @@ tuple<GLfloat, GLfloat, GLfloat> Color::random()
 {
 	return make_tuple(rand()%256,rand()%256,rand()%256);
 }
-int Color::getR()
+GLint Color::getR()
 {
 	return r;
 }
-int Color::getG()
+GLint Color::getG()
 {
 	return g;
 }
-int Color::getB()
+GLint Color::getB()
 {
 	return b;
 }

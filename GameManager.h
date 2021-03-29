@@ -4,10 +4,14 @@
 
 class GameManager
 {
+	GLfloat timer;
 public:
 	GameManager();
 	void init();
 	void set();
 	void reset();
+	void incTimer();
+	void drawTime();
+	GLfloat getTime();
 };
 #endif

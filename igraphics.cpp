@@ -4,15 +4,15 @@ We need a screen which is in graphics mode to do graphical work . Opengl does th
 */
 #include "GameManager.h"
 
-int iG::iWindowWidth;
-int iG::iWindowHeight;
-int iG::iWindowX;
-int iG::iWindowY;
-int iG::iScreenWidth;
-int iG::iScreenHeight;
-double iG::iClearR;
-double iG::iClearG;
-double iG::iClearB;
+GLint iG::iWindowWidth;
+GLint iG::iWindowHeight;
+GLint iG::iWindowX;
+GLint iG::iWindowY;
+GLint iG::iScreenWidth;
+GLint iG::iScreenHeight;
+GLfloat iG::iClearR;
+GLfloat iG::iClearG;
+GLfloat iG::iClearB;
 
 void iG::iInitialize(const char* title)
     {
@@ -31,6 +31,8 @@ void iG::iInitialize(const char* title)
         glutKeyboardFunc(keyboardHandler1FF); // Callback when normal key is pressed down
         glutSpecialFunc(keyboardHandler2FF);  // Callback when special key is pressed down
       
+        glEnable(GL_BLEND);     // Transparent Color
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);   // Transparent Color
         glEnable(GL_LINE_SMOOTH);
         glLineWidth(2.0);       // Width of drawing lines
 

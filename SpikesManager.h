@@ -4,11 +4,14 @@
 #include "GameManager.h"
 class SpikesManager
 {
-	vector<Spike> s;
+	vector<Spike> s;	
+	unsigned char* image;
+	int imageWidth, imageHeight;
 public:
 	SpikesManager();
-	void addSpike(float,float);
-	void update();
+	~SpikesManager();
+	void addSpike(GLfloat,GLfloat);
+	void update();	// Moving spikes
 	void draw();
 	bool checkCollision();
 	void clear();

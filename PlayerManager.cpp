@@ -7,7 +7,7 @@
 #include "ScoreManager.h"
 #include "MenuManager.h"
 #include "CameraManager.h"
-
+#include <stb_image.h>
 
 extern CameraManager camera;
 extern PlayerManager player;
@@ -25,6 +25,14 @@ PlayerManager::PlayerManager()
 	newX = newY = 0;
 	onGround = true;
 	setColor(RED);
+	int n;
+	stbi_set_flip_vertically_on_load(true);
+	image = stbi_load("Data\\Image\\player.png", &imageWidth, &imageHeight, &n, 4);
+}
+
+PlayerManager::~PlayerManager()
+{
+	stbi_image_free(image);
 }
 void PlayerManager::update()
 {
@@ -123,6 +131,7 @@ void PlayerManager::update()
 	// Check if game is over
 	if (!life)
 	{
+		PlaySoundA(NULL, NULL, NULL);
 		menu.set(MenuManager::GAMEOVER);
 	}
 
@@ -155,17 +164,17 @@ void PlayerManager::reset()
 	onGround = true;
 }
 
-void PlayerManager::setStart(int row, int col)
+void PlayerManager::setStart(GLint row, GLint col)
 {
 	startR = row;
 	startC = col;
 }
-void PlayerManager::setEnd(int row, int col)
+void PlayerManager::setEnd(GLint row, GLint col)
 {
 	endR = row;
 	endC = col;
 }
-void PlayerManager::setPosition(float row, float col)
+void PlayerManager::setPosition(GLfloat row, GLfloat col)
 {
 	newX = x = col * height;
 	newY = y = row * width;
@@ -211,8 +220,9 @@ void PlayerManager::moveLeft()
 
 void PlayerManager::draw()
 {
-	iG::iSetColor(getColor());
-	iG::iCircle(getX() - tiles.offsetCols * getWidth() + getWidth() / 2, getY() - tiles.offsetRows * getHeight() + getHeight() / 2, getWidth() / 2);
+    // iG::iSetColor(getColor());
+	// iG::iCircle(getX() - tiles.offsetCols * getWidth() + getWidth() / 2, getY() - tiles.offsetRows * getHeight() + getHeight() / 2, getWidth() / 2);
+	iG::iShowImage(getX() - tiles.offsetCols * getWidth(), getY() - tiles.offsetRows * getHeight(),imageWidth,imageHeight,image);
 }
 
 void PlayerManager::drawLife()
@@ -221,13 +231,12 @@ void PlayerManager::drawLife()
 	snprintf(temp, 40, "LIFE :  %d", life);
 	iG::iSetColor(RED);
 	iG::iText(iG::iGetWindowWidth() - 200, iG::iGetWindowHeight() - 100, temp);
-
 }
-float PlayerManager::getRow()
+GLfloat PlayerManager::getRow()
 {
 	return row;
 }
-float PlayerManager::getCol()
+GLfloat PlayerManager::getCol()
 {
 	return col;
 }

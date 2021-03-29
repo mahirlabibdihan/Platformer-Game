@@ -1,9 +1,10 @@
-Dihan 220
-DIhan 150
-Diha 80
-Dihan 70
-Dihuu 20
-Subha 20
-MahirLabibDIhan 0
-MahirLabibDIhan 0
-MahirLabibDIhan 0
+Dihan 111 250
+Dihan 23 80
+Subha 26 80
+Ohi 42 80
+DIha 108 70
+dihu 68 60
+DIhan 7 30
+Amrin 7 30
+Dihuu 8 30
+Ohi 8 30

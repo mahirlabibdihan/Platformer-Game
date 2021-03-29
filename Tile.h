@@ -1,3 +1,5 @@
+#ifndef __TILE__
+#define __TILE__
 #include "GameManager.h"
 #include "Box.h"
 class Tile:public Box {
@@ -7,3 +9,4 @@ public:
 	void setType(char);
 	char getType();
 };
+#endif

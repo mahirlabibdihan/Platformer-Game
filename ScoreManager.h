@@ -2,22 +2,21 @@
 #define __SCORE_MANAGER__
 #include "GameManager.h"
 class ScoreManager {
-	int currentScore,totalR;
-	string name;
-	int selectedR;
-	
+	GLint currentScore,totalR;
+	string name;	// Name of player
+	GLint selectedR;	// Score board's selected row
 public:
 	ScoreManager();
-	void increase();
-	void draw();
-	void drawBoard();
-	void drawGameOver();
-	void save();
+	void increase();	// Increasing the score after every pickup
+	void draw();	// Draw score at top right corner of game screen
+	void drawBoard();	// Draw score board
+	void drawGameOver();	// Draw score at gameover screen
 	void reset();
-	void nameEntry(unsigned char);
-	void keyDown();
-	void keyUp();
+	void save();
 	void edit();
 	void erase();
+	void nameEntry(unsigned char);	// Add every key that is pressed at gameover screen to player's name
+	void keyDown();
+	void keyUp();
 };
 #endif

@@ -3,11 +3,12 @@
 #include "Box.h"
 class Spike:public Box
 {
-	float amplitude, velX, centerX;
+	GLfloat velX, centerX;
+	GLfloat amplitude;	// Maximum distance from center
 public:
 	Spike();
 	void init();
-	void setCenter(float,float);
+	void setCenter(GLfloat,GLfloat);
 	void update();		// Move spike left and right
 };
 #endif

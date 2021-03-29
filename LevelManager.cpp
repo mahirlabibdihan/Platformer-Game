@@ -10,7 +10,7 @@ LevelManager::LevelManager()
 LevelManager::~LevelManager()
 {
 	// Deallocating memory
-	for (int i = 0; i < rows; i++)
+	for (GLint i = 0; i < rows; i++)
 	{
 		delete[] levelField[i];
 	}
@@ -20,7 +20,7 @@ void LevelManager::init()
 {
 	totalLevels = 2;
 }
-void LevelManager::setTotalLevels(int n)
+void LevelManager::setTotalLevels(GLint n)
 {
 	totalLevels = n;
 }
@@ -39,26 +39,26 @@ void LevelManager::set()
 
 	// Allocating memory
 	levelField = new char* [rows];
-	for (int i = 0; i < rows; i++)
+	for (GLint i = 0; i < rows; i++)
 	{
 		levelField[i] = new char[cols];
 	}
 
-	for (int i = rows - 1; i > -1; i--)
+	for (GLint i = rows - 1; i > -1; i--)
 	{
 		in.ignore(10, '\n');
-		for (int j = 0; j < cols; j++)
+		for (GLint j = 0; j < cols; j++)
 		{
 			in >> levelField[i][j];
 		}
 	}
 	in.close();
 }
-int LevelManager::getCols()
+GLint LevelManager::getCols()
 {
 	return cols;
 }
-int LevelManager::getRows()
+GLint LevelManager::getRows()
 {
 	return rows;
 }
@@ -71,23 +71,23 @@ bool LevelManager::levelUp()
 	}
 	return false;
 }
-char LevelManager::getCell(int row, int col)
+char LevelManager::getCell(GLint row, GLint col)
 {
 	return levelField[row][col];
 }
-int LevelManager::getStartR()
+GLint LevelManager::getStartR()
 {
 	return startR;
 }
-int LevelManager::getStartC()
+GLint LevelManager::getStartC()
 {
 	return startC;
 }
-int LevelManager::getEndR()
+GLint LevelManager::getEndR()
 {
 	return endR;
 }
-int LevelManager::getEndC()
+GLint LevelManager::getEndC()
 {
 	return endC;
 }

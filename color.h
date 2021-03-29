@@ -11,7 +11,7 @@
 
 class Color {
 protected:
-	int r, g, b;
+	GLint r, g, b;
 public:
 	Color();
 	Color(GLfloat r, GLfloat g, GLfloat b);
@@ -19,8 +19,8 @@ public:
 	void setColor(tuple<GLfloat, GLfloat, GLfloat>rgb);
 	tuple<GLfloat, GLfloat, GLfloat> getColor();
 	static tuple<GLfloat, GLfloat, GLfloat> random();
-	int getR();
-	int getG();
-	int getB();
+	GLint getR();
+	GLint getG();
+	GLint getB();
 };
 #endif

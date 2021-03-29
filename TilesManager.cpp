@@ -3,7 +3,7 @@
 #include "CameraManager.h"
 #include "GameManager.h"
 #include "SpikesManager.h"
-
+#include <stb_image.h>
 extern SpikesManager spikes;
 extern GameManager game;
 extern CameraManager camera;
@@ -15,6 +15,13 @@ TilesManager::TilesManager()
 	height = 70;
 	tileOffsetX = tileOffsetY = 0;
 	tilesField = NULL;
+	int n;
+	stbi_set_flip_vertically_on_load(true);
+	image = stbi_load("Data\\Image\\coin.png", &imageWidth, &imageHeight, &n, 4);
+}
+TilesManager::~TilesManager()
+{
+	stbi_image_free(image);
 }
 
 void TilesManager::draw()
@@ -30,26 +37,26 @@ void TilesManager::draw()
 	if (offsetRows > rows - visibleRows) offsetRows = rows - visibleRows;
 
 	// Get offsets for smooth movement
-	tileOffsetX = (offsetCols - (int)offsetCols) * width;
-	tileOffsetY = (offsetRows - (int)offsetRows) * height;
+	tileOffsetX = (offsetCols - (GLint)offsetCols) * width;
+	tileOffsetY = (offsetRows - (GLint)offsetRows) * height;
 
 	// Draw visible tile map
-	for (int i = 0; i <= visibleRows + 1 && i + offsetRows < rows; i++)
+	for (GLint i = 0; i <= visibleRows + 1 && i + offsetRows < rows; i++)
 	{
-		for (int j = 0; j <= visibleCols + 1 && j + offsetCols < cols; j++)
+		for (GLint j = 0; j <= visibleCols + 1 && j + offsetCols < cols; j++)
 		{
-			if (tilesField[int(i + offsetRows)][int(j + offsetCols)].getType() == '.')
+			if (tilesField[GLint(i + offsetRows)][GLint(j + offsetCols)].getType() == '.')
 			{
 
 			}
-			else if (tilesField[int(i + offsetRows)][int(j + offsetCols)].getType() == 'o')
+			else if (tilesField[GLint(i + offsetRows)][GLint(j + offsetCols)].getType() == 'o')
 			{
-				iG::iSetColor(YELLOW);
-				iG::iCircle(j * width - tileOffsetX + width / 2, i * height - tileOffsetY + height / 2, width / 2);
+				 //iG::iSetColor(YELLOW);
+				 ///iG::iCircle(j * width - tileOffsetX + width / 2, i * height - tileOffsetY + height / 2, width / 2);
+				iG::iShowImage(j * width - tileOffsetX, i * height - tileOffsetY,imageWidth,imageHeight,image);
 			}
 			else
 			{
-
 				iG::iSetColor(BLACK);
 				iG::iRectangle(j * width - tileOffsetX, i * height - tileOffsetY, width, height);
 			}
@@ -70,15 +77,15 @@ void TilesManager::set()
 
 	// Allocating memory 
 	tilesField = new Tile * [rows];
-	for (int i = 0; i < rows; i++)
+	for (GLint i = 0; i < rows; i++)
 	{
 		tilesField[i] = new Tile[cols];
 	}
 
 	// Transfering the information from levelfield to tilesfield
-	for (int i = 0; i < rows; i++)
+	for (GLint i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols; j++)
+		for (GLint j = 0; j < cols; j++)
 		{
 			if (level.getCell(i, j) == 'x')
 			{
@@ -92,7 +99,7 @@ void TilesManager::set()
 	}
 }
 
-char TilesManager::getCell(int row, int col)
+char TilesManager::getCell(GLint row, GLint col)
 {
 	if (row <rows && row >-1 && col <cols && col >-1)
 		return tilesField[row][col].getType();
@@ -100,27 +107,27 @@ char TilesManager::getCell(int row, int col)
 		return '#';
 }
 
-void TilesManager::setCell(int row, int col, char c)
+void TilesManager::setCell(GLint row, GLint col, char c)
 {
 
 	if (row <rows && row >-1 && col <cols && col >-1)
 		tilesField[row][col].setType(c);
 }
 
-int TilesManager::getWidth()
+GLint TilesManager::getWidth()
 {
 	return width;
 }
-int TilesManager::getHeight()
+GLint TilesManager::getHeight()
 {
 	return height;
 }
 
-int TilesManager::getRows()
+GLint TilesManager::getRows()
 {
 	return rows;
 }
-int TilesManager::getCols()
+GLint TilesManager::getCols()
 {
 	return cols;
 }

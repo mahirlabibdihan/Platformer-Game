@@ -4,6 +4,7 @@
 #include "SpikesManager.h"
 #include "LevelManager.h"
 #include "ScoreManager.h"
+#include <stb_image.h>
 
 extern ScoreManager score;
 extern LevelManager level;
@@ -16,8 +17,15 @@ MenuManager::MenuManager()
 {
 	menuName = MAIN;
 	option = PLAY_GAME;
+	int n;
+	stbi_set_flip_vertically_on_load(true);
+	bgImage = stbi_load("Data\\Image\\background.png", &bgWidth, &bgHeight, &n, 4);
 }
-int MenuManager::get()
+MenuManager::~MenuManager()
+{
+	stbi_image_free(bgImage);
+}
+GLint MenuManager::get()
 {
 	return menuName;
 }
@@ -27,12 +35,14 @@ void MenuManager::set(menus n)
 }
 void MenuManager::drawPlayGame()
 {
+	iG::iShowImage(0, 0,bgWidth,bgHeight, bgImage);
 	tiles.draw();
 	player.draw();
 	spikes.draw();
 	score.draw();
 	player.drawLife();
 	level.draw();
+	game.drawTime();
 }
 void MenuManager::drawGameOver()
 {
@@ -82,6 +92,7 @@ void MenuManager::keyEnter()
 {
 	if (option == PLAY_GAME)
 	{
+		PlaySoundA("Data\\Music\\background.wav",NULL,SND_ASYNC|SND_LOOP);
 		menuName = PLAY;
 		game.reset();
 		game.set();

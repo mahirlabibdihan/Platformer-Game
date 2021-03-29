@@ -35,10 +35,11 @@ void iG::windowSetup()
 	iG::iSetBGColor(GREEN);
 }
 
-void update(int t)		// Game screen update
+void update(GLint t)		// Game screen update
 {
 	if (menu.get() == MenuManager::PLAY)
 	{
+		game.incTimer();
 		player.update();	// Updating Player position
 		spikes.update();	// Updating Spikes position
 		camera.update();	// Updating camera position
@@ -47,7 +48,7 @@ void update(int t)		// Game screen update
 	glutTimerFunc(30, update, 0);
 }
 
-int main(int argc, char *argv[])
+GLint main(GLint argc, char *argv[])
 {
 	glutInit(&argc, argv);	// Initializing glut
 	iG::windowSetup();	// Setting window

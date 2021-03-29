@@ -1,47 +1,13 @@
-﻿  ScoreManager.cpp
-D:\Github\Platformer_Game\iGraphics.h(47,54): warning C4244: 'argument': conversion from 'double' to 'GLclampf', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(47,39): warning C4244: 'argument': conversion from 'double' to 'GLclampf', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(47,24): warning C4244: 'argument': conversion from 'double' to 'GLclampf', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(85,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(89,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(106,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(106,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(116,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(116,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(130,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(130,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(130,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(130,13): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(140,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(140,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(140,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(140,13): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(159,33): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(159,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(168,33): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(168,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(184,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(184,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(185,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(185,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(186,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(186,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(187,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(187,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(188,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(188,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(194,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(194,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(195,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(195,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(196,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(196,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(197,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(197,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(198,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\iGraphics.h(198,14): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\ScoreManager.cpp(51,65): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\ScoreManager.cpp(73,66): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-D:\Github\Platformer_Game\ScoreManager.cpp(115,16): warning C4018: '<': signed/unsigned mismatch
-D:\Github\Platformer_Game\ScoreManager.cpp(128,16): warning C4018: '<': signed/unsigned mismatch
+﻿  TilesManager.cpp
+D:\Github\Platformer_Game\iGraphics.h(85,14): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\iGraphics.h(89,14): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\iGraphics.h(155,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(36,57): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(37,57): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(56,81): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(56,70): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(61,78): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(61,71): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(92,34): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\TilesManager.cpp(92,23): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
   Platformer_Game.vcxproj -> D:\Github\Platformer_Game\Debug\Platformer_Game.exe

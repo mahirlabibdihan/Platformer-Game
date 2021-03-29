@@ -10,7 +10,7 @@ void Spike::init()
 	amplitude = 3 * tiles.getWidth();
 	velX = 5;
 }
-void Spike::setCenter(float x,float y)
+void Spike::setCenter(GLfloat x,GLfloat y)
 {
 	setPoint(x, y);
 	centerX = x;

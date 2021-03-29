@@ -27,6 +27,7 @@ void iG::iKeyboard(unsigned char key)
 		{
 		case '\b':
 			menu.set(MenuManager::MAIN);
+			PlaySoundA(NULL, NULL,NULL);
 			break;
 		}
 		break;

@@ -2,14 +2,19 @@
 #include "Spike.h"
 #include "TilesManager.h"
 #include "PlayerManager.h"
-
+#include <stb_image.h>
 extern PlayerManager player;
 extern TilesManager tiles;
 SpikesManager::SpikesManager()
 {
-	
+	int n;
+	image = stbi_load("Data\\Image\\spikes.png", &imageWidth, &imageHeight, &n, 4);
 }
-void SpikesManager::addSpike(float x,float y)
+SpikesManager::~SpikesManager()
+{
+	stbi_image_free(image);
+}
+void SpikesManager::addSpike(GLfloat x,GLfloat y)
 {
 	Spike temp;
 	temp.init();
@@ -20,7 +25,7 @@ void SpikesManager::addSpike(float x,float y)
 }
 void SpikesManager::update()
 {
-	for (int i=0;i<s.size();i++)
+	for (GLint i=0;i<s.size();i++)
 	{
 		s[i].update();
 	}
@@ -31,7 +36,7 @@ void SpikesManager::clear()
 }
 bool SpikesManager::checkCollision()
 {
-	for (int i = 0;i < s.size();i++)
+	for (GLint i = 0;i < s.size();i++)
 	{
 		if (floor(player.getY()/player.getHeight())==floor(s[i].getY() / s[i].getHeight())|| ceil(player.getY() / player.getHeight()) == floor(s[i].getY() / s[i].getHeight()))
 		{
@@ -51,7 +56,8 @@ void SpikesManager::draw()
 {
 	for (auto i : s)
 	{
-		iG::iSetColor(BLUE);
-		iG::iRectangle(i.getX()- tiles.offsetCols * tiles.getWidth(), i.getY()- tiles.offsetRows * tiles.getHeight(), tiles.getWidth(), tiles.getHeight());
+		//iG::iSetColor(BLUE);
+		//iG::iRectangle(i.getX()- tiles.offsetCols * tiles.getWidth(), i.getY()- tiles.offsetRows * tiles.getHeight(), tiles.getWidth(), tiles.getHeight());
+		iG::iShowImage(i.getX() - tiles.offsetCols * tiles.getWidth(), i.getY() - tiles.offsetRows * tiles.getHeight(), imageWidth, imageHeight,image);
 	}
 }

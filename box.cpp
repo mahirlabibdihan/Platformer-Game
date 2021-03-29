@@ -30,7 +30,7 @@ void Box::draw()
 	iG::iSetColor(getColor());
 	iG::iRectangle(x,y,width,height);
 }
-void Box::setBounds(int x, int y, int width, int height)
+void Box::setBounds(GLint x, GLint y, GLint width, GLint height)
 {
 	this->x = x;
 	this->y = y;

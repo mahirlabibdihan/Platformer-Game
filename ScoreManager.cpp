@@ -3,6 +3,7 @@
 #include "MenuManager.h"
 
 extern MenuManager menu;
+extern GameManager game;
 ScoreManager::ScoreManager()
 {
 	currentScore = 0;
@@ -19,13 +20,13 @@ void ScoreManager::increase()
 }
 void ScoreManager::draw()
 {
-	iG::iSetColor(YELLOW);
-	iG::iRectangle(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 180.0f, 250.0f, 180.0f);
+	iG::iSetColor(YELLOW,0.7);
+	iG::iRectangle(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 240.0f, 250.0f, 240.0f);
+
 	char temp[40];
 	snprintf(temp, 40, "SCORE :  %d", currentScore);
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() - 200.0f, iG::iGetWindowHeight() - 50.0f, temp);
-
+	iG::iText(iG::iGetWindowWidth() - 200.0f, iG::iGetWindowHeight() - 50.0f, temp);	
 }
 void ScoreManager::drawGameOver()
 {
@@ -47,15 +48,15 @@ void ScoreManager::drawGameOver()
 
 void ScoreManager::drawBoard()
 {
-	int i;
-
+	GLint i;
 	// Draw Header
 	glPushMatrix();
 	glTranslatef(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight(), 0.0f);
 	glScalef(0.6f, 0.6f, 1.0f);
 	iG::iSetColor(RED);
-	iG::iBigText(-600, -200, "NAME");
-	iG::iBigText(400, -200, "SCORE");
+	iG::iBigText(-1000, -200, "NAME");
+	iG::iBigText(-200, -200, "TIME");
+	iG::iBigText(600, -200, "SCORE");
 	glPopMatrix();
 
 	// Draw scores
@@ -63,8 +64,8 @@ void ScoreManager::drawBoard()
 	in.open("Data\\HIGHSCORE.txt", ios::in);
 	for (i = 0;!in.eof();i++)
 	{
-		string str, s;
-		in >> str >> s;
+		string str, s,t;
+		in >> str >> t >> s;
 
 		if (selectedR == i)
 		{
@@ -76,10 +77,10 @@ void ScoreManager::drawBoard()
 		glTranslatef(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight(), 0.0f);
 		glScalef(0.45f, 0.45f, 1.0f);
 		iG::iSetColor(BLACK);
-		iG::iBigText(-550.0f - str.length() * 35.0, -470.0f - i * 185, str);
-		iG::iBigText(550.0f, -470.0f - i * 185, s);
+		iG::iBigText(-1100.0f - str.length() * 35.0, -470.0f - i * 185, str);
+		iG::iBigText(-250.0f, -470.0f - i * 185, t);
+		iG::iBigText(800.0f, -470.0f - i * 185, s);
 		glPopMatrix();
-
 	}
 	in.close();
 
@@ -92,76 +93,83 @@ void ScoreManager::drawBoard()
 struct ScoreType
 {
 	string name;
-	int score;
+	GLint time;
+	GLint score;
 };
-void read(vector<ScoreType>& ScoreSheet)
+void read(vector<ScoreType>& scoreSheet)
 {
 	ifstream in;
 	in.open("Data\\Highscore.txt", ios::in);
 	while (!in.eof())
 	{
 		string str;
-		int s;
-		in >> str >> s;
+		GLint s;
+		GLint t;
+		in >> str >> t >> s;
 		if (str != "")
 		{
-			ScoreSheet.push_back({ str, s });
+			scoreSheet.push_back({ str, t , s });
 		}
 	}
 	in.close();
 }
-void write(vector<ScoreType>& ScoreSheet)
+void write(vector<ScoreType>& scoreSheet)
 {
-	int i;
+	GLint i;
 	ofstream out;
 	out.open("Data\\Highscore.txt", ios::out);
-	for (i = 0; i < ScoreSheet.size() - 1 && i < 9; i++)
+	for (i = 0; i < scoreSheet.size() - 1 && i < 9; i++)
 	{
-		out << ScoreSheet[i].name << " " << ScoreSheet[i].score << endl;
+		out << scoreSheet[i].name << " " << scoreSheet[i].time<<" "<<scoreSheet[i].score << endl;
 	}
-	out << ScoreSheet[i].name << " " << ScoreSheet[i].score;
+	out << scoreSheet[i].name << " " << scoreSheet[i].time << " " << scoreSheet[i].score;
 	out.close();
 }
 void ScoreManager::save()
 {
-	vector<ScoreType> ScoreSheet;
-	read(ScoreSheet);
-	ScoreType temp = { name, currentScore };
-	int i;
-	for (i = 0; i < ScoreSheet.size(); i++)
+	vector<ScoreType> scoreSheet;
+	read(scoreSheet);
+	ScoreType temp = { name, game.getTime() , currentScore };
+	GLint i;
+	for (i = 0; i < scoreSheet.size(); i++)
 	{
-		if (currentScore > ScoreSheet[i].score)
+		if (currentScore > scoreSheet[i].score)
 		{
-			ScoreSheet.insert(ScoreSheet.begin() + i, temp);
+			scoreSheet.insert(scoreSheet.begin() + i, temp);
+			break;
+		}
+		else if (currentScore == scoreSheet[i].score && game.getTime() < scoreSheet[i].time)
+		{
+			scoreSheet.insert(scoreSheet.begin() + i, temp);
 			break;
 		}
 	}
-	if (i == ScoreSheet.size() && i < 10)
+	if (i == scoreSheet.size() && i < 10)
 	{
-		ScoreSheet.push_back(temp);
+		scoreSheet.push_back(temp);
 	}
-	write(ScoreSheet);
-	totalR = ScoreSheet.size();
+	write(scoreSheet);
+	totalR = scoreSheet.size();
 }
 
 
 void ScoreManager::erase()
 {
-	vector<ScoreType> ScoreSheet;
-	read(ScoreSheet);
-	ScoreSheet.erase(ScoreSheet.begin() + selectedR);
-	write(ScoreSheet);
-	totalR = ScoreSheet.size();
+	vector<ScoreType> scoreSheet;
+	read(scoreSheet);
+	scoreSheet.erase(scoreSheet.begin() + selectedR);
+	write(scoreSheet);
+	totalR = scoreSheet.size();
 }
 
 void ScoreManager::edit()
 {
-	vector<ScoreType> ScoreSheet;
-	read(ScoreSheet);
-	currentScore = ScoreSheet[selectedR].score;
-	ScoreSheet.erase(ScoreSheet.begin() + selectedR);
-	write(ScoreSheet);
-	totalR = ScoreSheet.size();
+	vector<ScoreType> scoreSheet;
+	read(scoreSheet);
+	currentScore = scoreSheet[selectedR].score;
+	scoreSheet.erase(scoreSheet.begin() + selectedR);
+	write(scoreSheet);
+	totalR = scoreSheet.size();
 	menu.set(MenuManager::GAMEOVER);
 }
 

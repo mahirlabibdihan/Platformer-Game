@@ -3,10 +3,10 @@
 #include "GameManager.h"
 class LevelManager
 {
-	int levelNum,totalLevels;
-	int cols,rows;
+	GLint levelNum,totalLevels;
+	GLint cols,rows;
 	
-	int startR, startC, endR, endC;	// Starting and ending position of a level
+	GLint startR, startC, endR, endC;	// Starting and ending position of a level
 
 	char** levelField;
 
@@ -23,15 +23,15 @@ public:
 	void init();
 	void set();	// Reading level from file
 	void reset();
-	void setTotalLevels(int);
-	int getCols();
-	int getRows();
-	int getStartR();
-	int getStartC();
-	int getEndR();
-	int getEndC();
+	void setTotalLevels(GLint);
+	GLint getCols();
+	GLint getRows();
+	GLint getStartR();
+	GLint getStartC();
+	GLint getEndR();
+	GLint getEndC();
 	bool levelUp();
-	char getCell(int,int);
-	void draw();	// Draw level number in top right corner of game screen
+	char getCell(GLint,GLint);
+	void draw();	// Draw level number at top right corner of game screen
 };
 #endif

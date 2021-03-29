@@ -13,6 +13,6 @@ public:
 	GLfloat getHeight();
 	GLfloat getWidth();
 	void draw();
-	void setBounds(int x, int y, int width, int height);
+	void setBounds(GLint x, GLint y, GLint width, GLint height);
 };
 #endif

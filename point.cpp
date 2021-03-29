@@ -3,37 +3,29 @@ Point::Point()
 {
 	this->x=this->y=0;
 }
-Point::Point(float x, float y)
+Point::Point(GLfloat x, GLfloat y)
 {
 	this->x=x;
 	this->y=y;
 }
-float Point::getX()
+GLfloat Point::getX()
 {
 	return x;
 }
-float Point::getY()
+GLfloat Point::getY()
 {
 	return y;
 }
-void Point::setPoint(float x, float y)
+void Point::setPoint(GLfloat x, GLfloat y)
 {
 	this->x = x;
 	this->y = y;
 }
-void Point::setX(float x)
+void Point::setX(GLfloat x)
 {
 	this->x = x;
 }
-void Point::setY(float y)
+void Point::setY(GLfloat y)
 {
 	this->y = y;
-}
-void Point::changeX(float x)
-{
-	this->x += x;
-}
-void Point::changeY(float y)
-{
-	this->y += y;
 }
