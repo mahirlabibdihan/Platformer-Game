@@ -1,0 +1,7 @@
+﻿  keyboard.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Bounce\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Bounce\iGraphics.h(153,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Bounce\iGraphics.h(214,14): warning C4244: '=': conversion from 'GLfloat' to 'GLuint', possible loss of data
+D:\Github\Bounce\iGraphics.h(218,14): warning C4244: '=': conversion from 'GLfloat' to 'GLuint', possible loss of data
+  Bounce.vcxproj -> D:\Github\Bounce\Debug\Bounce.exe

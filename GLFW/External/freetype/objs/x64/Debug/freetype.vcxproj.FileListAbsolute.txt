@@ -1,0 +1,2 @@
+D:\Github\Bounce\External\freetype\objs\x64\Debug\freetype.dll
+D:\Github\Bounce\External\freetype\objs\x64\Debug\freetype.pdb
