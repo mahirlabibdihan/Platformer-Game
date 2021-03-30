@@ -2,7 +2,7 @@
 #include "Spike.h"
 #include "TilesManager.h"
 #include "PlayerManager.h"
-#include <stb_image.h>
+#include "Opengl\\include\\stb_image.h"
 extern PlayerManager player;
 extern TilesManager tiles;
 SpikesManager::SpikesManager()

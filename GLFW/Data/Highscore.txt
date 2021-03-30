@@ -1,8 +1,10 @@
 Dihan 111 250
+AADS 51 130
 Dihan 23 80
 Ohi 42 80
+	DD 129 80
+TDDDDTDDDDDDDDDD 13 60
+Subha 17 40
+Amrin 17 40
+ASDS 6 30
 DIhan 7 30
-Amrin 7 30
-Dihuu 8 30
-Ohi 8 30
-Am 9 30

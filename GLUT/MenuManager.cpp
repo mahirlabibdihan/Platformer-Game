@@ -4,7 +4,7 @@
 #include "SpikesManager.h"
 #include "LevelManager.h"
 #include "ScoreManager.h"
-#include <stb_image.h>
+#include "Opengl\\include\\stb_image.h"
 
 extern ScoreManager score;
 extern LevelManager level;

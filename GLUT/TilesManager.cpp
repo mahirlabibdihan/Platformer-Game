@@ -3,7 +3,7 @@
 #include "CameraManager.h"
 #include "GameManager.h"
 #include "SpikesManager.h"
-#include <stb_image.h>
+#include "Opengl\\include\\stb_image.h"
 extern SpikesManager spikes;
 extern GameManager game;
 extern CameraManager camera;

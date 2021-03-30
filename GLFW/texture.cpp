@@ -21,33 +21,50 @@ void Texture::createProgram()
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
 
+	// Delete shader
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 }
-void Texture::init(const char* fileName, bool png)
-{
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenTextures(1, &texture);
 
-	createProgram();
+GLuint Texture::load(const char* fileName, bool png)
+{
+	GLuint texture;
+	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+	// Load image
 	int nrChannels;
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char* image = stbi_load(fileName, &this->width, &this->height, &nrChannels, 0);
-	if (png)
+	if (nrChannels==4)	// PNG
+	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->width, this->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	else
+	}	
+	else if(nrChannels == 3)  // JPG
+	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	}
 	glGenerateMipmap(GL_TEXTURE_2D);
-	stbi_image_free(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(image);
+	return texture;
+}
+void Texture::init(const char* fileName, bool png)
+{
+	createProgram();
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(iG::iScreenWidth), 0.0f, static_cast<float>(iG::iScreenHeight));
+	glUseProgram(shaderProgram);
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
+	texture=load(fileName, png);
+
+	// Configure VAO , VBO
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 2 * 4, NULL, GL_STATIC_DRAW);
@@ -58,20 +75,15 @@ void Texture::init(const char* fileName, bool png)
 }
 
 
-void Texture::setBounds(GLfloat x, GLfloat y, GLfloat width, GLfloat height)
+void Texture::setBounds(GLfloat x, GLfloat y, GLfloat w, GLfloat h)
 {
-	GLfloat x1, x2, y1, y2;
-	x1 = x / (iG::iWindowWidth / 2.0f) - 1.0f,
-	y1 = y / (iG::iWindowHeight / 2.0f) - 1.0f,
-	x2 = ((x + width) / (iG::iWindowWidth / 2.0f)) - 1.0f,
-	y2 = ((y + height) / (iG::iWindowHeight / 2.0f)) - 1.0f;
-
 	GLfloat vertices[] = {
-		x1, y1,
-		x2, y1,
-		x2, y2,
-		x1, y2
+		x, y,
+		x+w, y,
+		x+w, y+h,
+		x, y+h
 	};
+
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices); // be sure to use glBufferSubData and not glBufferData
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -86,5 +98,4 @@ void Texture::draw(GLfloat x, GLfloat y, GLfloat width, GLfloat height)
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
-
 }

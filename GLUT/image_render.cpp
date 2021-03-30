@@ -1,7 +1,7 @@
 #include "GameManager.h"
 #ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+#include "Opengl\\include\\stb_image.h"
 #endif
 
 void iG::iShowImage(GLfloat x, GLfloat y, GLfloat width, GLfloat height,unsigned char* image)

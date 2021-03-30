@@ -7,8 +7,9 @@
 #include "ScoreManager.h"
 #include "MenuManager.h"
 #include "CameraManager.h"
+#include "AudioManager.h"
 
-
+extern AudioManager sound;
 extern CameraManager camera;
 extern PlayerManager player;
 extern MenuManager menu;
@@ -123,6 +124,7 @@ void PlayerManager::update()
 	// Check if game is over
 	if (!life)
 	{
+		sound.stopAll();
 		menu.set(MenuManager::GAMEOVER);
 	}
 
@@ -224,7 +226,7 @@ void PlayerManager::drawLife()
 	char temp[40];
 	snprintf(temp, 40, "LIFE :  %d", life);
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() - 200, iG::iGetWindowHeight() - 100, temp);
+	Text::render(iG::iGetWindowWidth() - 250, iG::iGetWindowHeight() - 100, temp);
 
 }
 GLfloat PlayerManager::getRow()

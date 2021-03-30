@@ -1,31 +1,21 @@
 #pragma once
 #include "GameManager.h"
+struct Character {
+	unsigned int TextureID; // ID handle of the glyph texture
+	glm::ivec2   Size;      // Size of glyph
+	glm::ivec2   Bearing;   // Offset from baseline to left/top of glyph
+	unsigned int Advance;   // Horizontal offset to advance to next glyph
+};
 class Text
-{
-	GLint width, height;
-	GLuint shaderProgram, VBO, VAO, texture;
-	const GLchar* vertexShaderSource = "#version 430 core"
-		"layout(location = 0) in vec4 vertex;" // <vec2 pos, vec2 tex>
-		"out vec2 TexCoords;"
-		"uniform mat4 projection;"
-		"void main()"
-		"{"
-		"gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);"
-		"TexCoords = vertex.zw;"
-		"}";
-
-	const GLchar* fragmentShaderSource = "#version 430 core"
-		"in vec2 TexCoords;"
-		"out vec4 color;"
-		"uniform sampler2D text;"
-		"uniform vec3 textColor;"
-		"void main()"
-		"{"
-		"vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);"
-		"color = vec4(textColor, 1.0) * sampled;"
-		"}";
+{	
+	static map<GLchar, Character> Characters;
+	static GLuint shaderProgram, VBO, VAO ;
+    static const GLchar* vertexShaderSource ;
+    static const GLchar* fragmentShaderSource ;
 public:
-	void createProgram();
-	void init();
-	void draw(std::string text, float x, float y, float scale);
+    static void init();
+	static void createProgram();
+	static void RenderText(GLuint shaderProgram, std::string text, float x, float y, float scale, glm::vec3 color);
+	static void draw(std::string text, float x, float y, float scale);
+	static void render(float x, float y, string text, float scale = 1.0);
 };

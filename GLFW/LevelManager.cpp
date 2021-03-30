@@ -102,5 +102,5 @@ void LevelManager::draw()
 	char temp[40];
 	snprintf(temp, 40, "LEVEL :  %d", levelNum);
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() - 200, iG::iGetWindowHeight() - 150, temp);
+	Text::render(iG::iGetWindowWidth() - 250, iG::iGetWindowHeight() - 150, temp);
 }

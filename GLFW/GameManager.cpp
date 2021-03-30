@@ -6,7 +6,10 @@
 #include "ScoreManager.h"
 #include "MenuManager.h"
 #include "SpikesManager.h"
+#include "AudioManager.h"
+#include "Text.h"
 
+extern AudioManager sound;
 extern SpikesManager spikes;
 extern MenuManager menu;
 extern ScoreManager score;
@@ -25,6 +28,8 @@ void GameManager::init()
 	player.init();
 	camera.init();
 	spikes.init();
+	menu.init();
+	Text::init();
 }
 void GameManager::set()
 {
@@ -37,6 +42,7 @@ void GameManager::set()
 	}
 	else
 	{
+		sound.stopAll();
 		menu.set(MenuManager::GAMEOVER);	// Player finished the game
 	}
 }
@@ -59,7 +65,7 @@ void GameManager::drawTime()
 	char temp[40];
 	snprintf(temp, 40, "TIME :  %.0f", timer);
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() - 200.0f, iG::iGetWindowHeight() - 200.0f, temp);
+	Text::render(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 200.0f, temp);
 }
 
 GLfloat GameManager::getTime()

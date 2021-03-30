@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Github\Platformer_Game\x64\Debug\Platformer_Game.exe</FullPath>
+      <FullPath>D:\Github\Platformer_Game\GLUT\x64\Debug\Platformer_Game.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

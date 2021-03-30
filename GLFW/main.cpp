@@ -9,6 +9,7 @@
 #include "ScoreManager.h"
 #include "color.h"
 
+AudioManager sound;
 ScoreManager score;
 MenuManager menu;
 SpikesManager spikes;
@@ -68,8 +69,6 @@ void iG::windowSetup()
 int main()
 {
 	iG::windowSetup();
-	AudioManager sound;
-	sound.play("Data/Music/Background.wav",true);
 	iG::iInitialize("Bounce");
 	return 0;
 }

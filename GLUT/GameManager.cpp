@@ -5,7 +5,7 @@
 #include "PlayerManager.h"
 #include "ScoreManager.h"
 #include "MenuManager.h"
-#include <stb_image.h>
+#include "Opengl\\include\\stb_image.h"
 extern MenuManager menu;
 extern ScoreManager score;
 extern PlayerManager player;

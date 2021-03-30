@@ -15,7 +15,7 @@ public:
 	void save();
 	void edit();
 	void erase();
-	void nameEntry(unsigned char);	// Add every key that is pressed at gameover screen to player's name
+	void nameEntry(int);	// Add every key that is pressed at gameover screen to player's name
 	void keyDown();
 	void keyUp();
 };

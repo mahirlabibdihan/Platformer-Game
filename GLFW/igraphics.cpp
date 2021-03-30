@@ -3,6 +3,8 @@ Normal output screen is in text mode .
 We need a screen which is in graphics mode to do graphical work . Opengl does that .
 */
 #include "GameManager.h"
+
+extern GameManager game;
 GLuint iG::iWindowWidth;
 GLuint iG::iWindowHeight;
 GLuint iG::iWindowX;
@@ -35,6 +37,7 @@ void iG::iInitialize(const char* title)
 	if (!glfwInit()) { exit(EXIT_FAILURE); }
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	GLFWwindow* window = glfwCreateWindow(iG::iWindowWidth, iG::iWindowHeight, "Bounce", glfwGetPrimaryMonitor(), NULL);
 	glfwMakeContextCurrent(window);
@@ -45,10 +48,12 @@ void iG::iInitialize(const char* title)
 
 	glEnable(GL_LINE_SMOOTH);
 	glLineWidth(2.0f);
+	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);     // Transparent Color
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);   // Transparent Color
 
 	iG::start();
+	game.init();
 	while (!glfwWindowShouldClose(window))
 	{
 		iDraw();

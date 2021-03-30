@@ -8,9 +8,10 @@ private:
 	const GLchar* vertexShaderSource = "#version 430 core\n"
 		"layout(location = 0) in vec2 aPos;"
 		"out vec2 TexCoord;"
+		"uniform mat4 projection;"
 		"void main()"
 		"{"
-		"gl_Position = vec4(aPos,1.0, 1.0);"
+		"gl_Position = projection * vec4(aPos,1.0, 1.0);"
 		"if(gl_VertexID==0)TexCoord = vec2(0.0f,0.0f);"
 		"if(gl_VertexID==1)TexCoord = vec2(1.0f,0.0f);"
 		"if(gl_VertexID==2)TexCoord = vec2(1.0f,1.0f);"
@@ -29,7 +30,7 @@ public:
 	void bind();
 	void unbind();
 	void createProgram();
-	void load(const char* file);
+	GLuint load(const char* file, bool png = true);
 	void init(const char* file,bool png=true);
 	void setBounds(GLfloat x, GLfloat y, GLfloat width, GLfloat height);
 	void draw(GLfloat x, GLfloat y, GLfloat width, GLfloat height);

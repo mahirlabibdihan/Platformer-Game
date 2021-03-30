@@ -1,6 +1,7 @@
 #ifndef __GAME_MANAGER__
 #define __GAME_MANAGER__
 #include "iGraphics.h"
+#include "Text.h"
 
 class GameManager
 {

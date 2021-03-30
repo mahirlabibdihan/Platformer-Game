@@ -7,7 +7,7 @@
 #include "ScoreManager.h"
 #include "MenuManager.h"
 #include "CameraManager.h"
-#include <stb_image.h>
+#include "Opengl\\include\\stb_image.h"
 
 extern CameraManager camera;
 extern PlayerManager player;

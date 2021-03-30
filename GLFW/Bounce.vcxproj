@@ -88,13 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Github\Bounce\External\Glad;D:\Github\Bounce\External;D:\Github\Bounce\External\GLEW\include;D:\Github\Bounce\External\GLFW\include;D:\Github\Bounce\External\irrKlang\include;D:\Github\Bounce\External\SOIL2\src\SOIL2;D:\Github\Bounce\External\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Github\Platformer_Game\GLFW\External\freetype-2.5.2\include;D:\Github\Platformer_Game\GLFW\External\Glad;D:\Github\Platformer_Game\GLFW\External;D:\Github\Platformer_Game\GLFW\External\GLEW\include;D:\Github\Platformer_Game\GLFW\External\GLFW\include;D:\Github\Platformer_Game\GLFW\External\irrKlang\include;D:\Github\Platformer_Game\GLFW\External\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Github\Bounce\External\GLEW\lib\Release\Win32;D:\Github\Bounce\External\GLFW\lib-vc2019;D:\Github\Bounce\External\irrKlang\lib\Win32-visualStudio;D:\Github\Bounce\External\SOIL2\lib\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;irrKlang.lib;glew32s.lib;glfw3.lib;soil2-debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Github\Platformer_Game\GLFW\External\GLEW\lib\Release\Win32;D:\Github\Platformer_Game\GLFW\External\GLFW\lib-vc2019;D:\Github\Platformer_Game\GLFW\External\irrKlang\lib\Win32-visualStudio;D:\Github\Platformer_Game\GLFW\External\freetype-2.5.2\objs\win32\vc2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;irrKlang.lib;glew32s.lib;glfw3.lib;freetype252_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

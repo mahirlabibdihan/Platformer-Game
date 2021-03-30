@@ -1,2 +1,4 @@
 D:\Github\Bounce\Debug\Bounce.exe
 D:\Github\Bounce\Debug\Bounce.pdb
+D:\Github\Platformer_Game\GLFW\Debug\Bounce.exe
+D:\Github\Platformer_Game\GLFW\Debug\Bounce.pdb

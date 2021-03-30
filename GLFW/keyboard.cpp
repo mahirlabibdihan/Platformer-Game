@@ -2,7 +2,9 @@
 #include "PlayerManager.h"
 #include "MenuManager.h"
 #include "ScoreManager.h"
+#include "AudioManager.h"
 
+extern AudioManager sound;
 extern ScoreManager score;
 extern MenuManager menu;
 extern PlayerManager player;
@@ -15,6 +17,7 @@ void iG::iKeyboard(GLFWwindow* window, int key, int scancode, int action, int mo
 		switch (menu.get())
 		{
 		case MenuManager::MAIN:
+			cout << key << endl;
 			if (action == GLFW_PRESS)
 			{
 				switch (key)
@@ -30,7 +33,6 @@ void iG::iKeyboard(GLFWwindow* window, int key, int scancode, int action, int mo
 					exit(0);
 					break;
 				case GLFW_KEY_ENTER:
-					cout << "Enter" << endl;
 					menu.keyEnter();
 					break;
 				}
@@ -56,21 +58,33 @@ void iG::iKeyboard(GLFWwindow* window, int key, int scancode, int action, int mo
 				menu.set(MenuManager::MAIN);
 				break;
 			case GLFW_KEY_BACKSPACE:
+				sound.stopAll();
 				menu.set(MenuManager::MAIN);
 				break;
 
 			}
 			break;
 		case MenuManager::SCORE:
-			switch (key)
+			if (action == GLFW_PRESS)
 			{
-			case GLFW_KEY_UP:
-				score.keyUp();
-				break;
-			case GLFW_KEY_DOWN:
-				score.keyDown();
+				switch (key)
+				{
+				case GLFW_KEY_UP:
+					score.keyUp();
+					break;
+				case GLFW_KEY_DOWN:
+					score.keyDown();
+					break;
+				case GLFW_KEY_BACKSPACE:
+					menu.set(MenuManager::MAIN);
+					break;
+				}
 				break;
 			}
+			
+		case MenuManager::GAMEOVER:
+			score.nameEntry(key);
+			break;
 		}
 	}
 

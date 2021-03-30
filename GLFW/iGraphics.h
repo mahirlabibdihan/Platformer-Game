@@ -14,6 +14,11 @@
 #include <vector>
 #include <tuple>
 #include <fstream>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <map>
+
 #define PI (acos(-1.0))
 using namespace std;
 
@@ -29,7 +34,6 @@ public:
 	static vector<vertice> vertices;
 	static GLfloat r, g, b, a;
 	static const GLchar* vertexShaderSource;
-
 	static const GLchar* fragmentShaderSource;
 
 	static GLuint shaderProgram, VBO, VAO, texture;
@@ -55,29 +59,7 @@ public:
 
 		return shaderProgram;
 	}
-	static GLuint createProgram(const GLchar* vertexShaderSource,const GLchar* fragmentShaderSource)
-	{
-		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-		glCompileShader(vertexShader);
-
-		// fragment shader
-		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-		glCompileShader(fragmentShader);
-
-		// link shaders
-		GLuint shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, vertexShader);
-		glAttachShader(shaderProgram, fragmentShader);
-		glLinkProgram(shaderProgram);
-
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
-
-		return shaderProgram;
-	}
-
+	
 	static void start()
 	{
 		r = g = b = 0.0f;
@@ -102,7 +84,6 @@ public:
 		glUseProgram(shaderProgram);
 		glUniform4f(glGetUniformLocation(shaderProgram, "ourColor"), r, g, b, a);
 		glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size());
-
 		glUniform4f(glGetUniformLocation(shaderProgram, "ourColor"), 0.0f, 0.0f, 0.0f, a);
 		glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
 
@@ -121,11 +102,12 @@ public:
 		g = get<1>(rgb) / 255;
 		b = get<2>(rgb) / 255;
 	}
-	static void iSetColor(GLfloat red, GLfloat green, GLfloat blue)
+	static void iSetColor(GLfloat red, GLfloat green, GLfloat blue,GLfloat alpha=1.0)
 	{
 		r = red / 255;
 		g = green / 255;
 		b = blue / 255;
+		a = alpha;
 	}
 	static void iSetBGColor(GLfloat r, GLfloat g, GLfloat b)
 	{
@@ -165,9 +147,9 @@ public:
 	{
 		GLfloat x1, x2, y1, y2;
 		x1 = x / (iWindowWidth / 2.0f) - 1.0f,
-			y1 = y / (iWindowHeight / 2.0f) - 1.0f,
-			x2 = ((x + width) / (iWindowWidth / 2.0f)) - 1.0f,
-			y2 = ((y + height) / (iWindowHeight / 2.0f)) - 1.0f;
+		y1 = y / (iWindowHeight / 2.0f) - 1.0f,
+		x2 = ((x + width) / (iWindowWidth / 2.0f)) - 1.0f,
+		y2 = ((y + height) / (iWindowHeight / 2.0f)) - 1.0f;
 
 		vertices.push_back({ x1, y1 });
 		vertices.push_back({ x2, y1 });

@@ -20,13 +20,13 @@ void ScoreManager::increase()
 }
 void ScoreManager::draw()
 {
-	iG::iSetColor(YELLOW);
-	iG::iRectangle(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 240.0f, 250.0f, 240.0f);
+	iG::iSetColor(100,100,100,.5);
+	iG::iRectangle(iG::iGetWindowWidth() - 260.0f, iG::iGetWindowHeight() - 210.0f, 260.0f, 210.0f);
 
 	char temp[40];
 	snprintf(temp, 40, "SCORE :  %d", currentScore);
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() - 200.0f, iG::iGetWindowHeight() - 50.0f, temp);
+	Text::render(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 50.0f, temp);
 
 	
 
@@ -39,14 +39,14 @@ void ScoreManager::drawGameOver()
 	// Draw Score
 	snprintf(temp, 40, "SCORE : %d", currentScore);
 	iG::iSetColor(BLACK);
-	iG::iBigText(iG::iGetWindowWidth() / 2.0f - 530, iG::iGetWindowHeight() - 300.0f, temp);
+	Text::render(iG::iGetWindowWidth() / 2.0f - 530, iG::iGetWindowHeight() - 300.0f, temp);
 
 	// Draw name entry
 	glPushMatrix();
 	glTranslatef(iG::iGetWindowWidth() / 2.0f - 630, iG::iGetWindowHeight() / 2.0f - 30, 0.0f);
 	glScalef(0.5f, 0.5f, 1.0f);
 	iG::iSetColor(BLACK);
-	iG::iBigText(0, 0, name);
+	Text::render(0, 0, name);
 	glPopMatrix();
 }
 
@@ -54,14 +54,10 @@ void ScoreManager::drawBoard()
 {
 	GLint i;
 	// Draw Header
-	glPushMatrix();
-	glTranslatef(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight(), 0.0f);
-	glScalef(0.6f, 0.6f, 1.0f);
 	iG::iSetColor(RED);
-	iG::iBigText(-1000, -200, "NAME");
-	iG::iBigText(-200, -200, "TIME");
-	iG::iBigText(600, -200, "SCORE");
-	glPopMatrix();
+	Text::render(200, iG::iGetWindowHeight() - 100 , "NAME");
+	Text::render(600, iG::iGetWindowHeight() - 100 , "TIME");
+	Text::render(1200, iG::iGetWindowHeight() - 100 , "SCORE");
 
 	// Draw scores
 	ifstream in;
@@ -73,24 +69,20 @@ void ScoreManager::drawBoard()
 
 		if (selectedR == i)
 		{
-			iG::iSetColor(YELLOW);
+			iG::iSetColor(100, 100, 100, 0.5);
 			iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 800, iG::iGetWindowHeight() - 225.0f - i * 83, 1600.0f, 70.0f);
 		}
 
-		glPushMatrix();
-		glTranslatef(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight(), 0.0f);
-		glScalef(0.45f, 0.45f, 1.0f);
 		iG::iSetColor(BLACK);
-		iG::iBigText(-1100.0f - str.length() * 35.0, -470.0f - i * 185, str);
-		iG::iBigText(-250.0f, -470.0f - i * 185, t);
-		iG::iBigText(800.0f, -470.0f - i * 185, s);
-		glPopMatrix();
+		Text::render(300.0f - str.length() * 35.0, iG::iGetWindowHeight()-200 - i * 85, str);
+		Text::render(650.0f, iG::iGetWindowHeight() - 200 - i * 85, t);
+		Text::render(1200.0f, iG::iGetWindowHeight() - 200 - i * 85, s);
 	}
 	in.close();
 
 	// Draw instructions
 	iG::iSetColor(RED);
-	iG::iText(iG::iGetWindowWidth() / 2.0f - 150, 20.0f, "Press e to edit and d to delete");
+	Text::render(iG::iGetWindowWidth() / 2.0f - 150, 20.0f, "Press e to edit and d to delete");
 	totalR = i;
 }
 
@@ -177,11 +169,11 @@ void ScoreManager::edit()
 	menu.set(MenuManager::GAMEOVER);
 }
 
-void ScoreManager::nameEntry(unsigned char key)
+void ScoreManager::nameEntry(int key)
 {
 	switch (key)
 	{
-	case '\r':
+	case GLFW_KEY_ENTER:
 		if (!name.empty())
 		{
 			save();
@@ -189,7 +181,7 @@ void ScoreManager::nameEntry(unsigned char key)
 			menu.set(MenuManager::MAIN);
 		}
 		break;
-	case '\b':
+	case GLFW_KEY_BACKSPACE:
 		if (!name.empty())
 		{
 			name.pop_back();
@@ -199,7 +191,7 @@ void ScoreManager::nameEntry(unsigned char key)
 	default:
 		if (name.length() < 25)
 		{
-			name += key;
+			name += (char)key;
 		}
 		break;
 	}
