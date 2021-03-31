@@ -25,7 +25,9 @@ using namespace std;
 class iG
 {
 public:
-	static GLuint iWindowHeight, iWindowWidth, iScreenHeight, iScreenWidth, iWindowX, iWindowY;
+	static GLFWwindow* window;
+	static GLuint iWindowHeight, iWindowWidth, iScreenHeight, iScreenWidth;
+	static GLfloat iWindowX, iWindowY;
 	static GLfloat iClearR, iClearG, iClearB;
 	struct vertice
 	{
@@ -36,7 +38,7 @@ public:
 	static const GLchar* vertexShaderSource;
 	static const GLchar* fragmentShaderSource;
 
-	static GLuint shaderProgram, VBO, VAO, texture;
+	static GLuint shaderProgram, VBO, VAO;
 	static GLuint createProgram()
 	{
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -67,7 +69,6 @@ public:
 		shaderProgram = createProgram();
 		glGenVertexArrays(1, &VAO);
 		glGenBuffers(1, &VBO);
-		glGenTextures(1, &texture);
 	}
 
 	static void iKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -77,8 +78,8 @@ public:
 	{
 		glBindVertexArray(VAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(vertice), &vertices[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(vertice), (void*)0);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*2*vertices.size() , &vertices[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*2, (void*)0);
 		glEnableVertexAttribArray(0);
 
 		glUseProgram(shaderProgram);
@@ -158,7 +159,6 @@ public:
 		draw();
 	}
 
-	static void iShowImage(GLfloat x, GLfloat y, GLfloat width, GLfloat height, const char* file);
 	static GLint iGetWindowHeight()
 	{
 		return iWindowHeight;
@@ -198,18 +198,6 @@ public:
 	static void iSetWindowY(GLfloat y)
 	{
 		iWindowY = y;
-	}
-	static void iText(GLfloat x, GLfloat y, const char* str)
-	{
-
-	}
-	static void iBigText(GLfloat x, GLfloat y, const char* str)
-	{
-
-	}
-	static void iBigText(GLfloat x, GLfloat y, string str)
-	{
-
 	}
 	static void windowSetup();
 	static void iInitialize(const char* title);

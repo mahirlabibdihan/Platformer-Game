@@ -5,13 +5,13 @@
 map<GLchar, Character> Text::Characters;
 GLuint Text::shaderProgram, Text::VBO, Text::VAO;
 const GLchar* Text::vertexShaderSource = "#version 430 core\n"
-"layout(location = 0) in vec4 vertex;\n" // <vec2 pos, vec2 tex>
+"layout(location = 0) in vec4 vertex;\n"
 "out vec2 TexCoords;\n"
 "uniform mat4 projection;\n"
 "void main()\n"
 "{\n"
-"gl_Position = projection * vec4(vertex.x,vertex.y,0.0, 1.0);\n"
-"TexCoords = vec2(vertex.z,vertex.w);\n"
+"gl_Position = projection * vec4(vertex.xy,0.0, 1.0);\n"
+"TexCoords = vec2(vertex.zw);\n"
 "}\n";
 
 const GLchar* Text::fragmentShaderSource = "#version 430 core\n"
@@ -27,7 +27,7 @@ const GLchar* Text::fragmentShaderSource = "#version 430 core\n"
 
 void Text::init()
 {
-    createProgram();
+    shaderProgram = createProgram();
 
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(iG::iScreenWidth), 0.0f, static_cast<float>(iG::iScreenHeight));
     glUseProgram(shaderProgram);
@@ -121,7 +121,7 @@ void Text::init()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
-void Text::createProgram()
+GLuint Text::createProgram()
 {
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -133,7 +133,7 @@ void Text::createProgram()
     glCompileShader(fragmentShader);
 
     // link shaders
-    shaderProgram = glCreateProgram();
+    GLuint shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
@@ -141,6 +141,8 @@ void Text::createProgram()
     // Delete shader
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+
+    return shaderProgram;
 }
 
 void Text::render(float x, float y, string text, float scale )
@@ -152,7 +154,7 @@ void Text::render(float x, float y, string text, float scale )
     glBindVertexArray(VAO);
 
     // iterate through all characters
-    std::string::const_iterator c;
+    string::const_iterator c;
     for (c = text.begin(); c != text.end(); c++)
     {
         Character ch = Characters[*c];
@@ -167,7 +169,7 @@ void Text::render(float x, float y, string text, float scale )
              xpos,     ypos + h,   0.0f, 0.0f ,
              xpos,     ypos,       0.0f, 1.0f ,
              xpos + w, ypos,       1.0f, 1.0f ,
-             xpos + w, ypos + h,   1.0f, 0.0f
+             xpos + w, ypos + h,   1.0f, 0.0f , 
         };
 
         // render glyph texture over quad

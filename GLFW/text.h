@@ -1,5 +1,6 @@
 #pragma once
 #include "GameManager.h"
+
 struct Character {
 	unsigned int TextureID; // ID handle of the glyph texture
 	glm::ivec2   Size;      // Size of glyph
@@ -14,8 +15,6 @@ class Text
     static const GLchar* fragmentShaderSource ;
 public:
     static void init();
-	static void createProgram();
-	static void RenderText(GLuint shaderProgram, std::string text, float x, float y, float scale, glm::vec3 color);
-	static void draw(std::string text, float x, float y, float scale);
+	static GLuint createProgram();
 	static void render(float x, float y, string text, float scale = 1.0);
 };

@@ -5,7 +5,7 @@ Spike::Spike()
 {
 	velX = 0;
 
-	image.init("Data\\Image\\spikes.png");
+	// image.init("Data\\Image\\spikes.png");
 }
 void Spike::init()
 {
@@ -32,5 +32,5 @@ void Spike::update()
 
 void Spike::draw()
 {
-	image.draw(getX() - tiles.offsetCols * tiles.getWidth(),getY() - tiles.offsetRows * tiles.getHeight(),tiles.getWidth(),tiles.getHeight());
+	// image.draw(getX() - tiles.offsetCols * tiles.getWidth(),getY() - tiles.offsetRows * tiles.getHeight(),tiles.getWidth(),tiles.getHeight());
 }

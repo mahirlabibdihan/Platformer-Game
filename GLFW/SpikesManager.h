@@ -4,7 +4,8 @@
 #include "GameManager.h"
 class SpikesManager
 {
-	GLuint VBO, VAO, texture, shaderProgram;
+	GLuint image;
+
 	vector<Spike> s;	
 public:
 	SpikesManager();

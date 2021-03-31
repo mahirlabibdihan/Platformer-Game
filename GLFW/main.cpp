@@ -23,9 +23,9 @@ void iDraw()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	iG::iShowImage(0.0f, 0.0f, iG::iWindowWidth, iG::iWindowHeight, "Data/image/img_mars.jpg");
+	iG::iShowImage(0.0f, 0.0f, iG::iGetWindowWidth(), iG::iGetWindowHeight(), "Data/image/img_mars.jpg");
 	iG::iSetColor(rand() % 256, rand() % 256, rand() % 256);
-	iG::iCircle(iG::iWindowWidth / 2.0f, iG::iWindowHeight / 2.0f, 200.0f, sides);
+	iG::iCircle(iG::iGetWindowWidth() / 2.0f, iG::iGetWindowHeight() / 2.0f, 200.0f, sides);
 }*/
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -33,8 +33,8 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	// make sure the viewport matches the new window dimensions; note that width and 
 	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
-	iG::iWindowWidth = width;
-	iG::iWindowHeight = height;
+	iG::iSetWindowWidth(width);
+	iG::iSetWindowHeight(height);
 }
 void update()		// Game screen update
 {

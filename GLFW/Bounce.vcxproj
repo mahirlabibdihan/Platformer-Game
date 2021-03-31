@@ -147,8 +147,8 @@
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="draw.cpp" />
+    <ClCompile Include="External\Glad\glad.c" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="glad.c" />
     <ClCompile Include="igraphics.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="texture.cpp" />

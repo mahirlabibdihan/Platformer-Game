@@ -7,6 +7,7 @@
 #include "MenuManager.h"
 #include "SpikesManager.h"
 #include "AudioManager.h"
+#include "Texture.h"
 #include "Text.h"
 
 extern AudioManager sound;
@@ -30,6 +31,7 @@ void GameManager::init()
 	spikes.init();
 	menu.init();
 	Text::init();
+	Texture::init();
 }
 void GameManager::set()
 {

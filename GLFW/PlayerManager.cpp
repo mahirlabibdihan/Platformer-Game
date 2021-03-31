@@ -140,7 +140,8 @@ void PlayerManager::init()
 	this->setHeight(tiles.getHeight());
 	this->setWidth(tiles.getWidth());
 
-	image.init("Data\\Image\\player.png");
+	image = Texture::load("Data\\Image\\player.png");
+	// image.init("Data\\Image\\player.png");
 }
 
 void PlayerManager::set()
@@ -218,7 +219,7 @@ void PlayerManager::draw()
 	// iG::iSetColor(getColor());
 	// iG::iCircle(getX() - tiles.offsetCols * getWidth() + getWidth() / 2, getY() - tiles.offsetRows * getHeight() + getHeight() / 2, getWidth() / 2);
 
-	image.draw(getX() - tiles.offsetCols * getWidth(), getY() - tiles.offsetRows * getHeight() , getWidth(), getHeight());
+	Texture::render(getX() - tiles.offsetCols * getWidth(), getY() - tiles.offsetRows * getHeight() , getWidth(), getHeight(), image);
 }
 
 void PlayerManager::drawLife()

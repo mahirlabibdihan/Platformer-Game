@@ -5,10 +5,11 @@ We need a screen which is in graphics mode to do graphical work . Opengl does th
 #include "GameManager.h"
 
 extern GameManager game;
+GLFWwindow* iG::window;
 GLuint iG::iWindowWidth;
 GLuint iG::iWindowHeight;
-GLuint iG::iWindowX;
-GLuint iG::iWindowY;
+GLfloat iG::iWindowX;
+GLfloat iG::iWindowY;
 GLuint iG::iScreenWidth;
 GLuint iG::iScreenHeight;
 GLfloat iG::iClearR;
@@ -16,7 +17,7 @@ GLfloat iG::iClearG;
 GLfloat iG::iClearB;
 vector<iG::vertice> iG::vertices;
 GLfloat iG::r, iG::g, iG::b, iG::a;
-GLuint iG::shaderProgram, iG::VBO, iG::VAO, iG::texture;
+GLuint iG::shaderProgram, iG::VBO, iG::VAO;
 const GLchar* iG::vertexShaderSource = "#version 430 core\n"
 "layout (location = 0) in vec2 aPos;\n"
 "void main()\n"
@@ -39,7 +40,7 @@ void iG::iInitialize(const char* title)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(iG::iWindowWidth, iG::iWindowHeight, "Bounce", glfwGetPrimaryMonitor(), NULL);
+	window = glfwCreateWindow(iG::iGetWindowWidth(), iG::iGetWindowHeight(), "Bounce", glfwGetPrimaryMonitor(), NULL);
 	glfwMakeContextCurrent(window);
 	if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
 	// glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -65,6 +66,6 @@ void iG::iInitialize(const char* title)
 
 	glfwTerminate();
 	glfwDestroyWindow(window);
-	glfwTerminate();
+
 	exit(EXIT_SUCCESS);
 }

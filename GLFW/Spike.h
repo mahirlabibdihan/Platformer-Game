@@ -4,7 +4,8 @@
 #include "texture.h"
 class Spike:public Box
 {
-	Texture image;
+	GLuint image;
+	GLint iWidth, iHeight;
 	GLfloat velX, centerX;
 	GLfloat amplitude;	// Maximum distance from center
 public:

@@ -4,8 +4,7 @@
 #include "texture.h"
 class PlayerManager:public Box
 {
-	Texture image;
-
+	GLuint image;
 
 	GLfloat velX,velY;
 	GLfloat newX, newY;	// Expected next position

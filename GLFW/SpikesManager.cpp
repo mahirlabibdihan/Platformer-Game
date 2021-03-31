@@ -13,7 +13,7 @@ SpikesManager::SpikesManager()
 
 void SpikesManager::init()
 {
-	
+	image = Texture::load("Data\\Image\\spikes.png");
 }
 void SpikesManager::addSpike(GLfloat x, GLfloat y)
 {
@@ -62,7 +62,7 @@ void SpikesManager::draw()
 		//iG::iSetColor(BLUE);
 		// iG::iRectangle(i.getX()- tiles.offsetCols * tiles.getWidth(), i.getY()- tiles.offsetRows * tiles.getHeight(), tiles.getWidth(), tiles.getHeight());
 		// iG::iShowImage(i.getX() - tiles.offsetCols * tiles.getWidth(), i.getY() - tiles.offsetRows * tiles.getHeight(), tiles.getWidth(), tiles.getHeight(),"Data\\Image\\spikes.png");
-		i.draw();
+		Texture::render(i.getX() - tiles.offsetCols * tiles.getWidth(), i.getY() - tiles.offsetRows * tiles.getHeight(), tiles.getWidth(), tiles.getHeight(), image);
 	}
 	
 }

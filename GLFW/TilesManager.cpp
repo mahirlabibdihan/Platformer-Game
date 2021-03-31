@@ -15,8 +15,6 @@ TilesManager::TilesManager()
 	height = 70;
 	tileOffsetX = tileOffsetY = 0;
 	tilesField = NULL;
-
-
 }
 
 void TilesManager::draw()
@@ -49,7 +47,8 @@ void TilesManager::draw()
 				//iG::iSetColor(YELLOW);
 				//iG::iCircle(j * width - tileOffsetX + width / 2, i * height - tileOffsetY + height / 2, width / 2);
 				
-				pickUp.draw(j* width - tileOffsetX, i * height - tileOffsetY,getWidth(), getHeight());
+				// pickUp.draw(j* width - tileOffsetX, i * height - tileOffsetY,getWidth(), getHeight());
+				Texture::render(j * width - tileOffsetX, i * height - tileOffsetY, getWidth(), getHeight(), image);
 			}
 			else
 			{
@@ -65,7 +64,8 @@ void TilesManager::init()
 {
 	visibleRows = iG::iGetWindowHeight() / height;
 	visibleCols = iG::iGetWindowWidth() / width;
-	pickUp.init("Data\\Image\\coin.png");
+	image = Texture::load("Data\\Image\\coin.png");
+	// pickUp.init("Data\\Image\\coin.png");
 }
 void TilesManager::set()
 {

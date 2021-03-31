@@ -22,7 +22,8 @@ MenuManager::MenuManager()
 
 void MenuManager::init()
 {
-	bgImage.init("Data\\Image\\img_mars.jpg",false);	
+	// bgImage.init("Data\\Image\\img_mars.jpg",false);	
+	image = Texture::load("Data\\Image\\img_mars.jpg");
 }
 GLint MenuManager::get()
 {
@@ -34,7 +35,8 @@ void MenuManager::set(menus n)
 }
 void MenuManager::drawPlayGame()
 {
-	bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	// bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	Texture::render(0,0, iG::iGetWindowWidth(), iG::iGetWindowHeight(), image);
 	tiles.draw();
 	player.draw();
 	spikes.draw();
@@ -45,7 +47,8 @@ void MenuManager::drawPlayGame()
 }
 void MenuManager::drawGameOver()
 {
-	bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	// bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	Texture::render(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight(), image);
 	iG::iSetColor(100, 100, 100, 0.5);
 	iG::iRectangle(iG::iGetWindowWidth() / 2 - 650, iG::iGetWindowHeight() / 2 - 90, 1300, 180);
 	glPushMatrix();
@@ -109,14 +112,15 @@ void MenuManager::keyEnter()
 }
 void MenuManager::drawMainMenu()
 {
-	bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	// bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	Texture::render(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight(), image);
 	if (option == PLAY_GAME)
 	{
 		iG::iSetColor(100,100,100,0.5);
 		iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f + 150, 800.0f, 180.0f);
 	}
-	iG::iSetColor(BLACK);
-	Text::render(iG::iGetWindowWidth() / 2.0f - 350, iG::iGetWindowHeight() / 2.0f + 200, "Play Game");
+	iG::iSetColor(RED);
+	Text::render(iG::iGetWindowWidth() / 2.0f - 180, iG::iGetWindowHeight() / 2.0f + 200, "Play Game",2.0);
 
 
 
@@ -125,8 +129,8 @@ void MenuManager::drawMainMenu()
 		iG::iSetColor(100, 100, 100, 0.5);
 		iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 450, iG::iGetWindowHeight() / 2.0f - 100, 900.0f, 180.0f);
 	}
-	iG::iSetColor(BLACK);
-	Text::render(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f - 50, "Score Board");
+	iG::iSetColor(RED);
+	Text::render(iG::iGetWindowWidth() / 2.0f - 210, iG::iGetWindowHeight() / 2.0f - 50, "Score Board",2.0);
 
 
 
@@ -135,11 +139,12 @@ void MenuManager::drawMainMenu()
 		iG::iSetColor(100, 100, 100, 0.5);
 		iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 400, iG::iGetWindowHeight() / 2.0f - 350, 800, 180);
 	}
-	iG::iSetColor(BLACK);
-	Text::render(iG::iGetWindowWidth() / 2.0f - 350, iG::iGetWindowHeight() / 2.0f - 300, "Quit Game");
+	iG::iSetColor(RED);
+	Text::render(iG::iGetWindowWidth() / 2.0f - 180, iG::iGetWindowHeight() / 2.0f - 300, "Quit Game",2.0);
 }
 void MenuManager::drawScoreBoard()
 {
-	bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	// bgImage.draw(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight());
+	Texture::render(0, 0, iG::iGetWindowWidth(), iG::iGetWindowHeight(), image);
 	score.drawBoard();
 }

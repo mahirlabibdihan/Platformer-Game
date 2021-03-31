@@ -27,10 +27,6 @@ void ScoreManager::draw()
 	snprintf(temp, 40, "SCORE :  %d", currentScore);
 	iG::iSetColor(RED);
 	Text::render(iG::iGetWindowWidth() - 250.0f, iG::iGetWindowHeight() - 50.0f, temp);
-
-	
-
-	
 }
 void ScoreManager::drawGameOver()
 {
@@ -38,15 +34,12 @@ void ScoreManager::drawGameOver()
 
 	// Draw Score
 	snprintf(temp, 40, "SCORE : %d", currentScore);
-	iG::iSetColor(BLACK);
-	Text::render(iG::iGetWindowWidth() / 2.0f - 530, iG::iGetWindowHeight() - 300.0f, temp);
+	iG::iSetColor(RED);
+	Text::render(iG::iGetWindowWidth() / 2.0f - 200, iG::iGetWindowHeight() - 300.0f, temp,2.0);
 
 	// Draw name entry
-	glPushMatrix();
-	glTranslatef(iG::iGetWindowWidth() / 2.0f - 630, iG::iGetWindowHeight() / 2.0f - 30, 0.0f);
-	glScalef(0.5f, 0.5f, 1.0f);
-	iG::iSetColor(BLACK);
-	Text::render(0, 0, name);
+	iG::iSetColor(YELLOW);
+	Text::render(iG::iGetWindowWidth() / 2 - 600 , iG::iGetScreenHeight()/2-45, name,2.0);
 	glPopMatrix();
 }
 
@@ -55,9 +48,9 @@ void ScoreManager::drawBoard()
 	GLint i;
 	// Draw Header
 	iG::iSetColor(RED);
-	Text::render(200, iG::iGetWindowHeight() - 100 , "NAME");
-	Text::render(600, iG::iGetWindowHeight() - 100 , "TIME");
-	Text::render(1200, iG::iGetWindowHeight() - 100 , "SCORE");
+	Text::render(400, iG::iGetWindowHeight() - 100 , "NAME");
+	Text::render(900, iG::iGetWindowHeight() - 100 , "TIME");
+	Text::render(1400, iG::iGetWindowHeight() - 100 , "SCORE");
 
 	// Draw scores
 	ifstream in;
@@ -70,19 +63,19 @@ void ScoreManager::drawBoard()
 		if (selectedR == i)
 		{
 			iG::iSetColor(100, 100, 100, 0.5);
-			iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 800, iG::iGetWindowHeight() - 225.0f - i * 83, 1600.0f, 70.0f);
+			iG::iRectangle(iG::iGetWindowWidth() / 2.0f - 800, iG::iGetWindowHeight() - 215.0f - i * 83, 1600.0f, 70.0f);
 		}
 
-		iG::iSetColor(BLACK);
-		Text::render(300.0f - str.length() * 35.0, iG::iGetWindowHeight()-200 - i * 85, str);
-		Text::render(650.0f, iG::iGetWindowHeight() - 200 - i * 85, t);
-		Text::render(1200.0f, iG::iGetWindowHeight() - 200 - i * 85, s);
+		iG::iSetColor(YELLOW);
+		Text::render(450.0f - str.length() * 11.0, iG::iGetWindowHeight()-200 - i * 83, str);
+		Text::render(900.0f, iG::iGetWindowHeight() - 200 - i * 83, t);
+		Text::render(1400.0f, iG::iGetWindowHeight() - 200 - i * 83, s);
 	}
 	in.close();
 
 	// Draw instructions
 	iG::iSetColor(RED);
-	Text::render(iG::iGetWindowWidth() / 2.0f - 150, 20.0f, "Press e to edit and d to delete");
+	Text::render(iG::iGetWindowWidth() / 2.0f - 250, 20.0f, "Press e to edit and d to delete");
 	totalR = i;
 }
 
@@ -186,10 +179,8 @@ void ScoreManager::nameEntry(int key)
 		{
 			name.pop_back();
 		}
-	case ' ':
-		break;
 	default:
-		if (name.length() < 25)
+		if (name.length() < 25&& key>='0' && key<='Z')
 		{
 			name += (char)key;
 		}

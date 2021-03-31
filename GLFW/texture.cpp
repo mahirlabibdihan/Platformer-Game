@@ -4,7 +4,45 @@
 #include <stb_image.h>
 #endif
 
-void Texture::createProgram()
+GLuint Texture::shaderProgram, Texture::VBO, Texture::VAO;
+const GLchar* Texture::vertexShaderSource = "#version 430 core\n"
+"layout(location = 0) in vec4 aPos;"
+"out vec2 TexCoord;"
+"uniform mat4 projection;"
+"void main()"
+"{"
+"gl_Position = projection * vec4(aPos.x,aPos.y,1.0, 1.0);"
+"TexCoord=vec2(aPos.z,aPos.w);"
+"}";
+
+const GLchar* Texture::fragmentShaderSource = "#version 430 core\n"
+"out vec4 FragColor;"
+"in vec2 TexCoord;"
+"uniform sampler2D texture;"
+"void main()"
+"{"
+"FragColor = texture(texture, TexCoord);"
+"}";
+void Texture::init()
+{
+	shaderProgram=createProgram();
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(iG::iScreenWidth), 0.0f, static_cast<float>(iG::iScreenHeight));
+	glUseProgram(shaderProgram);
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+	// Configure VAO , VBO
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 4 * 4, NULL, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void*)0);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+}
+
+GLuint Texture::createProgram()
 {
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -16,7 +54,7 @@ void Texture::createProgram()
 	glCompileShader(fragmentShader);
 
 	// link shaders
-	shaderProgram = glCreateProgram();
+	GLuint shaderProgram = glCreateProgram();
 	glAttachShader(shaderProgram, vertexShader);
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
@@ -24,9 +62,11 @@ void Texture::createProgram()
 	// Delete shader
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
+
+	return shaderProgram;
 }
 
-GLuint Texture::load(const char* fileName, bool png)
+GLuint Texture::load(const char* fileName)
 {
 	GLuint texture;
 	glGenTextures(1, &texture);
@@ -37,60 +77,54 @@ GLuint Texture::load(const char* fileName, bool png)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	// Load image
-	int nrChannels;
+	GLint nrChannels,width,height;
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char* image = stbi_load(fileName, &this->width, &this->height, &nrChannels, 0);
-	if (nrChannels==4)	// PNG
+	unsigned char* image = stbi_load(fileName, &width, &height, &nrChannels, 0);
+	if (nrChannels == 4)	// PNG
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->width, this->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	}	
-	else if(nrChannels == 3)  // JPG
+		glTexImage2D(
+			GL_TEXTURE_2D, 
+			0, 
+			GL_RGBA, 
+			width, 
+			height, 
+			0, 
+			GL_RGBA, 
+			GL_UNSIGNED_BYTE, 
+			image
+		);
+	}
+	else if (nrChannels == 3)  // JPG
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+		glTexImage2D(
+			GL_TEXTURE_2D, 
+			0, 
+			GL_RGB, 
+			width, 
+			height, 
+			0, 
+			GL_RGB, 
+			GL_UNSIGNED_BYTE, 
+			image
+		);
 	}
 	glGenerateMipmap(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	stbi_image_free(image);
 	return texture;
 }
-void Texture::init(const char* fileName, bool png)
-{
-	createProgram();
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(iG::iScreenWidth), 0.0f, static_cast<float>(iG::iScreenHeight));
-	glUseProgram(shaderProgram);
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
-	texture=load(fileName, png);
-
-	// Configure VAO , VBO
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 2 * 4, NULL, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void*)0);
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-}
-
-
-void Texture::setBounds(GLfloat x, GLfloat y, GLfloat w, GLfloat h)
+void Texture::render(GLfloat x, GLfloat y, GLfloat w, GLfloat h,GLuint texture)
 {
 	GLfloat vertices[] = {
-		x, y,
-		x+w, y,
-		x+w, y+h,
-		x, y+h
+		x,     y,		0.0f, 0.0f ,
+		x + w, y,       1.0f, 0.0f ,
+		x + w, y + h,   1.0f, 1.0f ,
+		x,     y + h,     0.0f, 1.0f
 	};
-
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices); // be sure to use glBufferSubData and not glBufferData
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-void Texture::draw(GLfloat x, GLfloat y, GLfloat width, GLfloat height)
-{
-	setBounds(x, y, width, height);
 
 	glBindVertexArray(VAO);
 	glBindTexture(GL_TEXTURE_2D, texture);

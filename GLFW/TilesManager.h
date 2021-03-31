@@ -6,7 +6,8 @@
 #include "Box.h"
 class TilesManager
 {
-	Texture pickUp;
+	GLuint image;
+
 	Tile** tilesField;
 	GLint width, height;	// Of a single tile
 	GLint rows, cols;		// Total in a level

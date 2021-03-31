@@ -3,7 +3,7 @@
 #include "GameManager.h"
 #include "texture.h"
 class MenuManager {
-	Texture bgImage;
+	GLuint image;
 public:
 	enum menus { MAIN, PLAY, SCORE, GAMEOVER };
 	enum menuOption {PLAY_GAME,SCORE_BOARD,QUIT_GAME};
