@@ -1,5 +1,266 @@
-﻿  main.cpp
+﻿  AudioManager.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
 D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  Rectangle.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\Rectangle.cpp(35,12): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\Rectangle.cpp(36,12): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\Rectangle.cpp(37,17): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\Rectangle.cpp(38,16): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+  CameraManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  color.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(8,12): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(9,12): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(10,12): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(14,12): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(15,12): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(16,12): warning C4244: '=': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(20,18): warning C4244: '=': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(21,18): warning C4244: '=': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\color.cpp(22,18): warning C4244: '=': conversion from 'float' to 'GLint', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(163,47): warning C4244: 'initializing': conversion from '_Ty' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+          and
+          [
+              _Ty=GLfloat
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(245): message : see reference to function template instantiation 'std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)' being compiled
+          with
+          [
+              _This=GLfloat,
+              _Ty=int,
+              _Other=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(245): message : see reference to function template instantiation 'std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)' being compiled
+          with
+          [
+              _This=GLfloat,
+              _Ty=int,
+              _Other=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(829): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<std::_Exact_args_t,int,int,int,0>(_Tag,_This2 &&,int &&,int &&)' being compiled
+          with
+          [
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(829): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<std::_Exact_args_t,int,int,int,0>(_Tag,_This2 &&,int &&,int &&)' being compiled
+          with
+          [
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(252): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<std::_Unpack_tuple_t,_Ty,0,1,2,0>(_Tag,_Tpl &&,std::integer_sequence<size_t,0,1,2>)' being compiled
+          with
+          [
+              _Ty=std::tuple<int,int,int>,
+              _Tag=std::_Unpack_tuple_t,
+              _Tpl=std::tuple<int,int,int>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(252): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<std::_Unpack_tuple_t,_Ty,0,1,2,0>(_Tag,_Tpl &&,std::integer_sequence<size_t,0,1,2>)' being compiled
+          with
+          [
+              _Ty=std::tuple<int,int,int>,
+              _Tag=std::_Unpack_tuple_t,
+              _Tpl=std::tuple<int,int,int>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(378): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<std::_Unpack_tuple_t,std::tuple<int,int,int>,0>(_Tag,_Tpl &&)' being compiled
+          with
+          [
+              _Tag=std::_Unpack_tuple_t,
+              _Tpl=std::tuple<int,int,int>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\tuple(378): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<std::_Unpack_tuple_t,std::tuple<int,int,int>,0>(_Tag,_Tpl &&)' being compiled
+          with
+          [
+              _Tag=std::_Unpack_tuple_t,
+              _Tpl=std::tuple<int,int,int>
+          ]
+D:\Github\Platformer_Game\GLFW\color.cpp(26): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<int,int,int,0>(std::tuple<int,int,int> &&) noexcept' being compiled
+D:\Github\Platformer_Game\GLFW\color.cpp(26): message : see reference to function template instantiation 'std::tuple<GLfloat,GLfloat,GLfloat>::tuple<int,int,int,0>(std::tuple<int,int,int> &&) noexcept' being compiled
+  draw.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  GameManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\GameManager.cpp(62,12): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+  igraphics.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  text.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  texture.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  keyboard.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  LevelManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\LevelManager.cpp(105,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\LevelManager.cpp(105,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  MenuManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(39,66): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(39,42): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(51,67): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(51,43): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(53,77): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(53,43): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(55,75): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(55,41): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(116,67): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(116,43): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(148,67): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\MenuManager.cpp(148,43): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+  PlayerManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(47,13): warning C4305: '*=': truncation from 'double' to 'GLfloat'
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(54,48): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(54,26): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(54,111): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(54,90): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(64,47): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(64,25): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(64,109): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(64,88): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(67,14): warning C4305: '=': truncation from 'double' to 'GLfloat'
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(73,47): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(73,26): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(73,112): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(73,91): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(81,48): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(81,26): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(81,114): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(81,92): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(89,47): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(89,25): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(91,44): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(91,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(95,46): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(95,25): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(97,43): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(97,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(101,46): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(101,24): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(103,43): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(103,21): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(107,45): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(107,24): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(109,42): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(109,21): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(140,33): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(141,31): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(230,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\PlayerManager.cpp(230,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  point.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  ScoreManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(42,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(42,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(51,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(52,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(53,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(70,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(70,23): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(71,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(72,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(110,16): warning C4018: '<': signed/unsigned mismatch
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(121,39): warning C4838: conversion from 'GLfloat' to 'GLint' requires a narrowing conversion
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(121,39): warning C4244: 'initializing': conversion from 'GLfloat' to 'GLint', possible loss of data
+D:\Github\Platformer_Game\GLFW\ScoreManager.cpp(123,16): warning C4018: '<': signed/unsigned mismatch
+  Spike.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\Spike.cpp(11,16): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+  SpikesManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\SpikesManager.cpp(23,32): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\SpikesManager.cpp(24,30): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\SpikesManager.cpp(29,16): warning C4018: '<': signed/unsigned mismatch
+D:\Github\Platformer_Game\GLFW\SpikesManager.cpp(41,21): warning C4018: '<': signed/unsigned mismatch
+D:\Github\Platformer_Game\GLFW\SpikesManager.cpp(65,149): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\SpikesManager.cpp(65,130): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+  Tile.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  TilesManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Github\Platformer_Game\GLFW\External\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+D:\Github\Platformer_Game\GLFW\iGraphics.h(136,17): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(29,57): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(30,57): warning C4244: '=': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(51,93): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(51,80): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(57,78): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(57,71): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(90,34): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+D:\Github\Platformer_Game\GLFW\TilesManager.cpp(90,23): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+  Generating Code...
+  glad.c
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(autofit.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(autofit.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(bdf.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(bdf.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(cff.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(cff.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(ftbase.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(ftbase.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(ftbitmap.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(ftbitmap.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(ftdebug.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(ftdebug.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(ftgzip.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(ftgzip.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(ftinit.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(ftinit.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(ftlzw.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(ftlzw.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(ftsystem.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(ftsystem.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(smooth.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(smooth.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(pcf.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(pcf.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(pfr.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(pfr.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(psaux.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(psaux.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(pshinter.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(pshinter.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(psmodule.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(psmodule.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(raster.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(raster.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(sfnt.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(sfnt.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(truetype.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(truetype.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(type1.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(type1.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(type1cid.obj) : warning LNK4099: PDB 'freetype.pdb' was not found with 'freetype252_D.lib(type1cid.obj)' or at 'D:\Github\Platformer_Game\GLFW\Debug\freetype.pdb'; linking object as if no debug info
+freetype252_D.lib(type42.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(type42.obj)' or at ''; linking object as if no debug info
+freetype252_D.lib(winfnt.obj) : warning LNK4099: PDB '' was not found with 'freetype252_D.lib(winfnt.obj)' or at ''; linking object as if no debug info
   Bounce.vcxproj -> D:\Github\Platformer_Game\GLFW\Debug\Bounce.exe

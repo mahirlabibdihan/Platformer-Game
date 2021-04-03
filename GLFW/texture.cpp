@@ -1,8 +1,10 @@
 #include "Texture.h"
-#ifndef STB_IMAGE_IMPLEMENTATION
+/*#ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
-#endif
+#include <stb_image.h>*/
+#include <SOIL2.h>
+
+//#endif
 
 GLuint Texture::shaderProgram, Texture::VBO, Texture::VAO;
 const GLchar* Texture::vertexShaderSource = "#version 430 core\n"
@@ -68,9 +70,17 @@ GLuint Texture::createProgram()
 
 GLuint Texture::load(const char* fileName)
 {
-	GLuint texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
+	/*GLuint texture;
+	glGenTextures(1, &texture);*/
+	GLuint texture = SOIL_load_OGL_texture
+	(
+		fileName,
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+	);
+
+	/*glBindTexture(GL_TEXTURE_2D, texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -110,7 +120,7 @@ GLuint Texture::load(const char* fileName)
 	}
 	glGenerateMipmap(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
-	stbi_image_free(image);
+	stbi_image_free(image);*/
 	return texture;
 }
 

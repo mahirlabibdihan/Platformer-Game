@@ -3,7 +3,7 @@
 #include "GameManager.h"
 #include "texture.h"
 #include "Tile.h"
-#include "Box.h"
+#include "Rectangle.h"
 class TilesManager
 {
 	GLuint image;

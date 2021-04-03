@@ -43,18 +43,20 @@ void iG::iInitialize(const char* title)
 	window = glfwCreateWindow(iG::iGetWindowWidth(), iG::iGetWindowHeight(), "Bounce", glfwGetPrimaryMonitor(), NULL);
 	glfwMakeContextCurrent(window);
 	if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
-	// glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	glfwSetKeyCallback(window, iKeyboard);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
-	glEnable(GL_LINE_SMOOTH);
-	glLineWidth(2.0f);
-	glEnable(GL_CULL_FACE);
+	glfwSetKeyCallback(window, iKeyboard);	// Callback for keyboard interactions
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);	  // Hide the cursor
+	
+	glLineWidth(2.0f);	 // Drawing line width
+	glEnable(GL_LINE_SMOOTH);	// Makes line smoother
+
 	glEnable(GL_BLEND);     // Transparent Color
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);   // Transparent Color
 
 	iG::start();
 	game.init();
+
+	// Main loop
 	while (!glfwWindowShouldClose(window))
 	{
 		iDraw();
@@ -66,6 +68,5 @@ void iG::iInitialize(const char* title)
 
 	glfwTerminate();
 	glfwDestroyWindow(window);
-
 	exit(EXIT_SUCCESS);
 }

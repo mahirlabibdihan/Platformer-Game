@@ -1,8 +1,8 @@
 #ifndef __TILE__
 #define __TILE__
 #include "GameManager.h"
-#include "Box.h"
-class Tile:public Box {
+#include "Rectangle.h"
+class Tile:public Rectangle {
 	char type;
 public:
 	Tile();

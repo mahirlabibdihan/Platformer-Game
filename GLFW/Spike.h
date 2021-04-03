@@ -1,8 +1,8 @@
 #ifndef __SPIKE__
 #define __SPIKE__
-#include "Box.h"
+#include "Rectangle.h"
 #include "texture.h"
-class Spike:public Box
+class Spike:public Rectangle
 {
 	GLuint image;
 	GLint iWidth, iHeight;

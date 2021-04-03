@@ -4,7 +4,6 @@ extern TilesManager tiles;
 Spike::Spike()
 {
 	velX = 0;
-
 	// image.init("Data\\Image\\spikes.png");
 }
 void Spike::init()

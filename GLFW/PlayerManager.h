@@ -1,8 +1,8 @@
 #ifndef __PLAYER_MANAGER__
 #define __PLAYER_MANAGER__
-#include "Box.h"
+#include "Rectangle.h"
 #include "texture.h"
-class PlayerManager:public Box
+class PlayerManager:public Rectangle
 {
 	GLuint image;
 

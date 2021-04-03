@@ -8,6 +8,7 @@
 #define RED 255,0,0
 #define YELLOW 255,255,0
 #define PURPLE 255,255,0
+#define GREY 100,100,100
 
 class Color {
 protected:

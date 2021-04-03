@@ -6,6 +6,7 @@
 #include "ScoreManager.h"
 #include "AudioManager.h"
 #include "text.h"
+
 extern AudioManager sound;
 extern ScoreManager score;
 extern LevelManager level;
@@ -13,7 +14,6 @@ extern GameManager game;
 extern SpikesManager spikes;
 extern PlayerManager player;
 extern TilesManager tiles;
-
 MenuManager::MenuManager()
 {
 	menuName = MAIN;
